@@ -4,14 +4,14 @@ CREATE DATABASE bd_notas;
 USE bd_notas;
 
 CREATE TABLE privilegio(
-	id INT AUTO_INCREMENT,
+    id INT AUTO_INCREMENT,
     descripcion VARCHAR(30),
     PRIMARY KEY(id)
 );
 
 CREATE TABLE cuenta(
-	id INT AUTO_INCREMENT,
-    user VARCHAR(30),
+    id INT AUTO_INCREMENT,
+    usuario VARCHAR(30),
     pass VARCHAR (40),
     privilegio INT,
     PRIMARY KEY(id),
