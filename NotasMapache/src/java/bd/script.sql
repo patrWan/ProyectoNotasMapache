@@ -39,7 +39,7 @@ CREATE TABLE docente(
 );
 
 CREATE TABLE alumno(
-	rut VARCHAR(13) UNIQUE,
+    rut VARCHAR(13) UNIQUE,
     nombre VARCHAR(30),
     apellido VARCHAR(30),
     direccion VARCHAR(100),
