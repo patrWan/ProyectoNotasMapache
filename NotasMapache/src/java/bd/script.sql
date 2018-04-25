@@ -19,7 +19,7 @@ CREATE TABLE cuenta(
 );
 
 CREATE TABLE apoderado(
-	rut VARCHAR(13) UNIQUE,
+    rut VARCHAR(13) UNIQUE,
     nombre VARCHAR(30),
     apellido VARCHAR(30),
     cuenta INT,
@@ -28,7 +28,7 @@ CREATE TABLE apoderado(
 ); 
 
 CREATE TABLE docente(
-	rut VARCHAR(13) UNIQUE,
+    rut VARCHAR(13) UNIQUE,
     nombre VARCHAR(30),
     apellido VARCHAR(30),
     direccion VARCHAR(100),
@@ -59,18 +59,26 @@ CREATE TABLE horario(
     PRIMARY KEY(id)
 );
 
+CREATE TABLE mensajeDocente(
+    id INT AUTO_INCREMENT,
+    descripcion VARCHAR(200),
+    PRIMARY KEY(id)
+);
+
 CREATE TABLE asignatura(
     id INT AUTO_INCREMENT,
     nombre VARCHAR(200),
     docente_fk VARCHAR(13),
     horario_fk INT,
+    mensajeDocente_fk INT,
     PRIMARY KEY(id),
     FOREIGN KEY (docente_fk) REFERENCES docente(rut),
-    FOREIGN KEY (horario_fk) REFERENCES horario(id)
+    FOREIGN KEY (horario_fk) REFERENCES horario(id),
+    FOREIGN KEY (mensajeDocente_fk) REFERENCES mensajeDocente(id)
 );
 
 CREATE TABLE alumnoAsignatura(
-	id INT AUTO_INCREMENT,
+    id INT AUTO_INCREMENT,
     alumno VARCHAR(13),
     asignatura INT,
     PRIMARY KEY(id),
