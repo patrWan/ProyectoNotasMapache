@@ -14,18 +14,10 @@ public class MySQL_AlumnosDAO implements AlumnoDAO {
     private List<Alumno> listaAlumnos;
      private String query;
       
-     
-        
-     
     public MySQL_AlumnosDAO() {
         
-          ConexionFactory.getInstance().getConexionDAO(ConexionFactory.Motor.MY_SQL).conectar("localhost", "root", "123456", "bd_notas");
-
     }
     
-
-
-
     @Override
     public void create(Alumno a) {
         String query = "insert into alumno values(null, '" + a.getRut() + "', '" + a.getNombre() + "', '" + a.getApellido() + "', '" + a.getDireccion() + "', '" + a.getApoderado_fk() + "'," + a.getCuenta() + ")";
@@ -33,12 +25,10 @@ public class MySQL_AlumnosDAO implements AlumnoDAO {
 
     @Override
     public List<Alumno> read() {
-        
-          
         try {
             Alumno a;
             listaAlumnos = new ArrayList<>();
-            query = "SELECT * FROM animal";
+            query = "SELECT * FROM alumno";
             ResultSet rs = ConexionFactory.getInstance().getConexionDAO(ConexionFactory.Motor.MY_SQL).ejecutarSelect(query);
             while (rs.next()) {
                 a = new Alumno();
@@ -53,16 +43,11 @@ public class MySQL_AlumnosDAO implements AlumnoDAO {
                 listaAlumnos.add(a);
             }
 //            
-
-
-          
         } catch (SQLException ex) {
             Logger.getLogger(MySQL_AlumnosDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
           return listaAlumnos;
     }
-
-
 
     @Override
     public List<Alumno> getNotas(int id) {
@@ -78,11 +63,8 @@ public class MySQL_AlumnosDAO implements AlumnoDAO {
         } catch (SQLException ex) {
             Logger.getLogger(MySQL_AlumnosDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
-            System.out.println("Se ha borrado el id '"+id+"' EXITOSAMENTE!!!");
        
     }
-
-   
 
     @Override
     public void update(Alumno nuevoAlumno) {

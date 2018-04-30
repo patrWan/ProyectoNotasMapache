@@ -14,14 +14,8 @@ import model.Asistencia;
 public class MySQL_AsistenciaDAO implements AsistenciaDAO{
         private List<Asistencia> listaAsistencia;
      private String query;
-     
-     
-     
          
     public MySQL_AsistenciaDAO() {
-        
-          ConexionFactory.getInstance().getConexionDAO(ConexionFactory.Motor.MY_SQL).conectar("localhost", "root", "123456", "bd_notas");
-
     }
     
     @Override
@@ -49,7 +43,6 @@ public class MySQL_AsistenciaDAO implements AsistenciaDAO{
             }
             return listaAsistencia;
     }
-
 
     @Override
     public List<Asistencia> getNotas(int id) {
