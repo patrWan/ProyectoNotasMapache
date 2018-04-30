@@ -1,29 +1,30 @@
 package model;
 
 public class Docente {
+
     private int id;
     private String rut;
     private String nombre;
     private String direccion;
     private String correo;
     private int cuenta;
+    private boolean docenteActivo;
 
-    public Docente(int id, String rut, String nombre, String direccion, String correo, int cuenta) {
+    public Docente(int id, String rut, String nombre, String direccion, String correo, int cuenta, boolean docenteActivo) {
         this.id = id;
         this.rut = rut;
         this.nombre = nombre;
         this.direccion = direccion;
         this.correo = correo;
         this.cuenta = cuenta;
+        this.docenteActivo = docenteActivo;
+    }
+
+    public Docente() {
     }
 
     public int getId() {
         return id;
-    }
-
- 
-
-    public Docente() {
     }
 
     public String getRut() {
@@ -65,5 +66,13 @@ public class Docente {
     public void setCuenta(int cuenta) {
         this.cuenta = cuenta;
     }
-    
+
+    public boolean isDocenteActivo() {
+        return docenteActivo;
+    }
+
+    public void setDocenteActivo(boolean docenteActivo) {
+        this.docenteActivo = docenteActivo;
+    }
+
 }

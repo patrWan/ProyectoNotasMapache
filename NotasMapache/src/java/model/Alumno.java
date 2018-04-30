@@ -8,8 +8,9 @@ public class Alumno {
     private String direccion;
     private int apoderado_fk;
     private int cuenta;
+    private boolean alumnoActivo;
 
-    public Alumno(int id, String rut, String nombre, String apellido, String direccion, int apoderado_fk, int cuenta) {
+    public Alumno(int id, String rut, String nombre, String apellido, String direccion, int apoderado_fk, int cuenta, boolean alumnoActivo) {
         this.id = id;
         this.rut = rut;
         this.nombre = nombre;
@@ -17,6 +18,7 @@ public class Alumno {
         this.direccion = direccion;
         this.apoderado_fk = apoderado_fk;
         this.cuenta = cuenta;
+        this.alumnoActivo = alumnoActivo;
     }
 
     public int getId() {
@@ -78,4 +80,14 @@ public class Alumno {
     public void setCuenta(int cuenta) {
         this.cuenta = cuenta;
     }
+
+    public boolean isAlumnoActivo() {
+        return alumnoActivo;
+    }
+
+    public void setAlumnoActivo(boolean alumnoActivo) {
+        this.alumnoActivo = alumnoActivo;
+    }
+    
+    
 }

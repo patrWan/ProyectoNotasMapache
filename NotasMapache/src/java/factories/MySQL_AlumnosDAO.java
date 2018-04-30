@@ -39,6 +39,7 @@ public class MySQL_AlumnosDAO implements AlumnoDAO {
                 a.setDireccion(rs.getString(5));
                 a.setApoderado_fk(rs.getInt(6));
                 a.setCuenta(rs.getInt(7));
+                a.setAlumnoActivo(rs.getBoolean(8));
                 
                 listaAlumnos.add(a);
             }

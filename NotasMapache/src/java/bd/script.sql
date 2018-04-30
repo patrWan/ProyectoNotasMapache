@@ -34,6 +34,7 @@ CREATE TABLE docente(
     direccion VARCHAR(100),
     correo VARCHAR(100),
     cuenta INT,
+    docenteActivo boolean,
     PRIMARY KEY(rut),
     FOREIGN KEY (cuenta) REFERENCES cuenta(id)
 );
@@ -45,6 +46,7 @@ CREATE TABLE alumno(
     direccion VARCHAR(100),
     apoderado_FK VARCHAR(13),
     cuenta INT,
+    alumnoActivo boolean,
     PRIMARY KEY(rut),
     FOREIGN KEY (apoderado_FK) REFERENCES apoderado(rut),
     FOREIGN KEY (cuenta) REFERENCES cuenta(id)
