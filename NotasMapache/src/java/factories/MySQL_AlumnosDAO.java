@@ -11,16 +11,23 @@ import java.util.logging.Logger;
 import model.Alumno;
 
 public class MySQL_AlumnosDAO implements AlumnoDAO {
+
     private List<Alumno> listaAlumnos;
-     private String query;
-      
-    public MySQL_AlumnosDAO() {
-        
+    private String query;
+    MySQL_Conexion c;
+
+    public MySQL_AlumnosDAO() throws SQLException, ClassNotFoundException {
+        c = new MySQL_Conexion(DatoConexion.MySQL.SERVER, DatoConexion.MySQL.USER, DatoConexion.MySQL.PASS, DatoConexion.MySQL.BD);
     }
-    
+
     @Override
     public void create(Alumno a) {
-        String query = "insert into alumno values(null, '" + a.getRut() + "', '" + a.getNombre() + "', '" + a.getApellido() + "', '" + a.getDireccion() + "', '" + a.getApoderado_fk() + "'," + a.getCuenta() + ")";
+        try {
+            query = "insert into alumno values(null, '" + a.getRut() + "', '" + a.getNombre() + "', '" + a.getApellido() + "', '" + a.getDireccion() + "', '" + a.getApoderado_fk() + "'," + a.getCuenta() + ")";
+            c.ejecutar(query);
+        } catch (SQLException ex) {
+            Logger.getLogger(MySQL_AlumnosDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     @Override
@@ -40,14 +47,14 @@ public class MySQL_AlumnosDAO implements AlumnoDAO {
                 a.setApoderado_fk(rs.getInt(6));
                 a.setCuenta(rs.getInt(7));
                 a.setAlumnoActivo(rs.getBoolean(8));
-                
+
                 listaAlumnos.add(a);
             }
 //            
         } catch (SQLException ex) {
             Logger.getLogger(MySQL_AlumnosDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
-          return listaAlumnos;
+        return listaAlumnos;
     }
 
     @Override
@@ -57,14 +64,13 @@ public class MySQL_AlumnosDAO implements AlumnoDAO {
 
     @Override
     public void delete(String id) {
-        query = "DELETE FROM alumno WHERE id = '"+id+"';";
-        
         try {
-            ConexionFactory.getInstance().getConexionDAO(ConexionFactory.Motor.MY_SQL).ejecutar(query);
+            query = "DELETE FROM alumno WHERE id = '" + id + "';";
+            c.ejecutar(query);
         } catch (SQLException ex) {
             Logger.getLogger(MySQL_AlumnosDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
-       
+
     }
 
     @Override
