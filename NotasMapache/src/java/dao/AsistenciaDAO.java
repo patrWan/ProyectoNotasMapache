@@ -10,7 +10,9 @@ public interface AsistenciaDAO {
 
     List<Asistencia> read();
 
-    void update(int id, String nuevoAsistencia);
+    void update(Asistencia a);
 
     List<Asistencia> getNotas(int id);
+    
+    void delete(String id);
 }

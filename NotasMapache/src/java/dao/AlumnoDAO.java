@@ -8,7 +8,9 @@ public interface AlumnoDAO {
 
     List<Alumno> read();
 
-    void update(int id, String nuevoAlumno);
+    void update(Alumno nuevoAlumno);
 
     List<Alumno> getNotas(int id);
+  
+    void delete(String id);
 }

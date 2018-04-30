@@ -1,19 +1,27 @@
 package model;
 
 public class Docente {
+    private int id;
     private String rut;
     private String nombre;
     private String direccion;
     private String correo;
     private int cuenta;
 
-    public Docente(String rut, String nombre, String direccion, String correo, int cuenta) {
+    public Docente(int id, String rut, String nombre, String direccion, String correo, int cuenta) {
+        this.id = id;
         this.rut = rut;
         this.nombre = nombre;
         this.direccion = direccion;
         this.correo = correo;
         this.cuenta = cuenta;
     }
+
+    public int getId() {
+        return id;
+    }
+
+ 
 
     public Docente() {
     }

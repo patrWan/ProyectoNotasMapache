@@ -9,8 +9,9 @@ public interface NotaDao {
 
     List<Nota> read();
 
-    void update(int id, String nuevoNota);
+    void update(Nota nuevoNota);
 
     
     List<Nota> getNotas(int id);
+    void delete(String id);
 }
