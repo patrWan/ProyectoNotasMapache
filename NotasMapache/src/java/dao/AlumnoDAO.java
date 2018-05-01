@@ -13,4 +13,6 @@ public interface AlumnoDAO {
     List<Alumno> getNotas(int id);
   
     void delete(String id);
+    
+    Alumno getAlumno(String usuario, String pass);
 }

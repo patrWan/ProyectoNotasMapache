@@ -8,6 +8,12 @@ CREATE TABLE privilegio(
     descripcion VARCHAR(30),
     PRIMARY KEY(id)
 );
+INSERT INTO privilegio VALUES(NULL,'alumno');
+INSERT INTO privilegio VALUES(NULL,'apoderado');
+
+SELECT privilegio.id FROM privilegio, cuenta
+WHERE privilegio.id = cuenta.privilegio 
+AND cuenta.usuario = 'pgonzalez';
 
 CREATE TABLE cuenta(
     id INT AUTO_INCREMENT,
@@ -17,7 +23,10 @@ CREATE TABLE cuenta(
     PRIMARY KEY(id),
     FOREIGN KEY (privilegio) REFERENCES privilegio(id)
 );
+INSERT INTO cuenta VALUES(NULL, 'pgonzalez', 123456, 1);
+INSERT INTO cuenta VALUES(NULL, 'acamilo', 123456, 2);
 
+SELECT * FROM CUENTA WHERE usuario = 'pgonzalez' AND pass = '123456';
 CREATE TABLE apoderado(
     rut VARCHAR(13) UNIQUE,
     nombre VARCHAR(30),
@@ -25,7 +34,9 @@ CREATE TABLE apoderado(
     cuenta INT,
     PRIMARY KEY(rut),
     FOREIGN KEY (cuenta) REFERENCES cuenta(id)
-); 
+);
+
+INSERT INTO apoderado VALUES('11.950.574-7','Angelica','Camilo', 2); 
 
 CREATE TABLE docente(
     rut VARCHAR(13) UNIQUE,
@@ -50,8 +61,11 @@ CREATE TABLE alumno(
     PRIMARY KEY(rut),
     FOREIGN KEY (apoderado_FK) REFERENCES apoderado(rut),
     FOREIGN KEY (cuenta) REFERENCES cuenta(id)
-); 
+);
+INSERT INTO alumno VALUES('19.121.033-6', 'Patricio','Gonzalez', 'Calle Boticelli 177', '11.950.574-7',1, TRUE); 
 
+SELECT alumno.rut, alumno.nombre, alumno.apellido, alumno.direccion FROM cuenta, alumno, privilegio WHERE cuenta.privilegio = privilegio.id AND cuenta.usuario = 'pgonzalez' AND cuenta.pass = 123456;
+ 
 CREATE TABLE horario(
 	id INT AUTO_INCREMENT,
     horasTotal INT,

@@ -20,6 +20,9 @@ public class Alumno {
         this.cuenta = cuenta;
         this.alumnoActivo = alumnoActivo;
     }
+    
+    public Alumno() {
+    }
 
     public int getId() {
         return id;
@@ -27,10 +30,6 @@ public class Alumno {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    
-    public Alumno() {
     }
 
     public String getRut() {

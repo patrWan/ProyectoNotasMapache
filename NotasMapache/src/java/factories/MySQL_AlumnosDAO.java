@@ -14,6 +14,7 @@ public class MySQL_AlumnosDAO implements AlumnoDAO {
 
     private List<Alumno> listaAlumnos;
     private String query;
+    private ResultSet rs;
     MySQL_Conexion c;
 
     public MySQL_AlumnosDAO() throws SQLException, ClassNotFoundException {
@@ -36,7 +37,7 @@ public class MySQL_AlumnosDAO implements AlumnoDAO {
             Alumno a;
             listaAlumnos = new ArrayList<>();
             query = "SELECT * FROM alumno";
-            ResultSet rs = ConexionFactory.getInstance().getConexionDAO(ConexionFactory.Motor.MY_SQL).ejecutarSelect(query);
+            rs = ConexionFactory.getInstance().getConexionDAO(ConexionFactory.Motor.MY_SQL).ejecutarSelect(query);
             while (rs.next()) {
                 a = new Alumno();
                 a.setId(rs.getInt(1));
@@ -76,6 +77,26 @@ public class MySQL_AlumnosDAO implements AlumnoDAO {
     @Override
     public void update(Alumno nuevoAlumno) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public Alumno getAlumno(String usuario, String pass) {
+        Alumno a = null;
+        query="SELECT alumno.rut, alumno.nombre, alumno.apellido, alumno.direccion FROM cuenta, alumno, privilegio WHERE cuenta.privilegio = privilegio.id AND cuenta.usuario = '"+usuario+"' AND cuenta.pass = '"+pass+"';";
+        rs = ConexionFactory.getInstance().getConexionDAO(ConexionFactory.Motor.MY_SQL).ejecutarSelect(query);
+        try {
+            if (rs.next()) {
+                a = new Alumno();
+                a.setRut(rs.getString(1));
+                a.setNombre(rs.getString(2));
+                a.setApellido(rs.getString(3));
+                a.setDireccion(rs.getString(4));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(MySQL_AlumnosDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return a;
+        
     }
 
 }
