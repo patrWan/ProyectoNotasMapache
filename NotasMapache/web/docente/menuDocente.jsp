@@ -20,7 +20,7 @@
         <h1><%out.print("Hola! " + d.getNombre());%></h1>
         <%
             out.println("RutT: " + d.getRut());
-            out.println("<a href='../cerrarSesion.do'>Cerrar Sesión</a>");
+            out.println("<br><a href='../cerrarSesion.do'>Cerrar Sesión</a>");
         %>
     </body>
 </html>
