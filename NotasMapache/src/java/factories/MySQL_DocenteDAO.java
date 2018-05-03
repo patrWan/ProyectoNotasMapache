@@ -6,6 +6,7 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import model.Cuenta;
 import model.Docente;
 
 public class MySQL_DocenteDAO implements DocenteDAO {
@@ -19,8 +20,13 @@ public class MySQL_DocenteDAO implements DocenteDAO {
     }
 
     @Override
-    public void create(Docente a) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void create(Docente d, Cuenta cu) {
+        query="INSERT INTO docente VALUES('"+d.getRut()+"', '"+d.getNombre()+"','"+d.getApellido()+"', '"+d.getDireccion()+"', '"+d.getCorreo()+"',"+cu.getId()+", TRUE);";
+        try {
+            c.ejecutar(query);
+        } catch (SQLException ex) {
+            Logger.getLogger(MySQL_DocenteDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     @Override

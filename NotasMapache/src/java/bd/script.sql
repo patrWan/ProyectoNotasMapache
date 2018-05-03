@@ -11,10 +11,12 @@ CREATE TABLE privilegio(
 INSERT INTO privilegio VALUES(NULL,'alumno');
 INSERT INTO privilegio VALUES(NULL,'docente');
 INSERT INTO privilegio VALUES(NULL,'apoderado');
+INSERT INTO privilegio VALUES(NULL,'Administrador');
 
 
 --SELECT descripcion FROM privilegio WHERE id = 1;
-
+SELECT * FROM docente;
+SELECT * FROM cuenta;
 --SELECT privilegio.id FROM privilegio, cuenta
 --WHERE privilegio.id = cuenta.privilegio 
 --AND cuenta.usuario = 'pgonzalez';
@@ -30,6 +32,7 @@ CREATE TABLE cuenta(
 INSERT INTO cuenta VALUES(NULL, 'pgonzalez', 123456, 1);
 INSERT INTO cuenta VALUES(NULL, 'caravena', 123456, 2);
 INSERT INTO cuenta VALUES(NULL, 'acamilo', 123456, 3);
+INSERT INTO cuenta VALUES(NULL, 'admin', 'admin', 4);
 
 
 --SELECT * FROM CUENTA WHERE usuario = 'pgonzalez' AND pass = '123456';

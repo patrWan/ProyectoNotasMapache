@@ -37,12 +37,15 @@ public class IniciarSesionServlet extends HttpServlet {
                 
                 
                 
-                String user, pass;
+                String user, pass ;
                 user = request.getParameter("txtUser");
                 pass = request.getParameter("txtPass");
                 
                 Cuenta c = cuenta.getCuenta(user, pass);
-                int privilegio = c.getPrivilegio();
+                if (c == null) {
+                    response.sendRedirect("index.jsp?error=1");
+                }else{
+                    int privilegio = c.getPrivilegio();
                 
                 if (privilegio == 1) {
                     MySQL_AlumnosDAO a = new MySQL_AlumnosDAO();
@@ -65,9 +68,10 @@ public class IniciarSesionServlet extends HttpServlet {
                     HttpSession sesion = request.getSession();
                     sesion.setAttribute("sesion", login);
                     response.sendRedirect("apoderado/menuApoderado.jsp");
-                    
-                
+                }else if(privilegio == 4){
+                    response.sendRedirect("admin/menuAdmin.jsp");
                 }
+                
                 /*Verificar los privilegios
                 1.-Alumno
                 2.-Docente
@@ -79,6 +83,8 @@ public class IniciarSesionServlet extends HttpServlet {
             
                 
                 */
+                }
+                
             } catch (ClassNotFoundException ex) {
                 Logger.getLogger(IniciarSesionServlet.class.getName()).log(Level.SEVERE, null, ex);
             } catch (SQLException ex) {

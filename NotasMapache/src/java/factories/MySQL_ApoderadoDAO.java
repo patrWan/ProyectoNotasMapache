@@ -40,5 +40,10 @@ public class MySQL_ApoderadoDAO implements ApoderadoDAO {
         }
         return a;
     }
+
+    @Override
+    public void update(Apoderado a) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }

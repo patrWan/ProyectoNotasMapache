@@ -4,6 +4,7 @@
     Author     : Patricio
 --%>
 
+<%@page import="javafx.scene.control.Alert"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -12,6 +13,10 @@
         <title>Inicio Sesión</title>
     </head>
     <body>
+        <%if (request.getParameter("error") != null) {
+            out.println("<script> alert('Datos Invalidos');</script>");
+            }
+        %>
         <h1>Inicio De Sesión</h1>
         <form method="POST" action="IniciarSesion.do">
             <input type="text" name="txtUser" placeholder="Ingrese Usuario:" required=""><br>
