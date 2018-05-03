@@ -9,14 +9,15 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import model.Privilegio;
 
-public class MySQL_PrivilegioDAO implements PrivilegioDAO{
-    
-     private List<Privilegio> listaPrivilegio;
+public class MySQL_PrivilegioDAO implements PrivilegioDAO {
+
+    private List<Privilegio> listaPrivilegio;
     private String query;
-    
+    private ResultSet rs;
+
     @Override
     public List<Privilegio> read() {
-            try {
+        try {
             Privilegio priv;
             listaPrivilegio = new ArrayList<>();
             query = "SELECT * FROM privilegio";
@@ -33,5 +34,23 @@ public class MySQL_PrivilegioDAO implements PrivilegioDAO{
             Logger.getLogger(MySQL_PrivilegioDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return listaPrivilegio;
-    }    
+    }
+
+    @Override
+    public Privilegio getPrivilegio(int id) {
+        Privilegio p = null;
+        query = "SELECT descripcion FROM privilegio WHERE id="+id;
+        rs = ConexionFactory.getInstance().getConexionDAO(ConexionFactory.Motor.MY_SQL).ejecutarSelect(query);
+
+        try {
+            if (rs.next()) {
+                p = new Privilegio();
+                p.setId(rs.getInt(1));
+                p.setDescripcion(rs.getString(2));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(MySQL_PrivilegioDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return p;
+    }
 }

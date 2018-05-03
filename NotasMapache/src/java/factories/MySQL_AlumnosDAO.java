@@ -80,9 +80,9 @@ public class MySQL_AlumnosDAO implements AlumnoDAO {
     }
 
     @Override
-    public Alumno getAlumno(String usuario, String pass) {
+    public Alumno getAlumno(int idCuenta) {
         Alumno a = null;
-        query="SELECT alumno.rut, alumno.nombre, alumno.apellido, alumno.direccion FROM cuenta, alumno, privilegio WHERE cuenta.privilegio = privilegio.id AND cuenta.usuario = '"+usuario+"' AND cuenta.pass = '"+pass+"';";
+        query="SELECT * FROM alumno WHERE cuenta = "+idCuenta;
         rs = ConexionFactory.getInstance().getConexionDAO(ConexionFactory.Motor.MY_SQL).ejecutarSelect(query);
         try {
             if (rs.next()) {
@@ -91,6 +91,9 @@ public class MySQL_AlumnosDAO implements AlumnoDAO {
                 a.setNombre(rs.getString(2));
                 a.setApellido(rs.getString(3));
                 a.setDireccion(rs.getString(4));
+                a.setApoderado_fk(rs.getInt(5));
+                a.setCuenta(rs.getInt(6));
+                a.setAlumnoActivo(rs.getBoolean(7));
             }
         } catch (SQLException ex) {
             Logger.getLogger(MySQL_AlumnosDAO.class.getName()).log(Level.SEVERE, null, ex);

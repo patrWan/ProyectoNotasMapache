@@ -5,4 +5,5 @@ import model.Privilegio;
 
 public interface PrivilegioDAO {
     List<Privilegio> read();
+    Privilegio getPrivilegio(int id);
 }

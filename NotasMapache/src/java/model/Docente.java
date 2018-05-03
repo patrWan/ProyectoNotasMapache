@@ -5,15 +5,17 @@ public class Docente {
     private int id;
     private String rut;
     private String nombre;
+    private String apellido;
     private String direccion;
     private String correo;
     private int cuenta;
     private boolean docenteActivo;
 
-    public Docente(int id, String rut, String nombre, String direccion, String correo, int cuenta, boolean docenteActivo) {
+    public Docente(int id, String rut, String nombre, String apellido, String direccion, String correo, int cuenta, boolean docenteActivo) {
         this.id = id;
         this.rut = rut;
         this.nombre = nombre;
+        this.apellido = apellido;
         this.direccion = direccion;
         this.correo = correo;
         this.cuenta = cuenta;
@@ -41,6 +43,14 @@ public class Docente {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
+    }
+    
+     public String getApellido() {
+        return apellido;
+    }
+
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
     }
 
     public String getDireccion() {

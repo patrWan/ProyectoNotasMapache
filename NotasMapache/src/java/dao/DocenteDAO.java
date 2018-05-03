@@ -13,4 +13,6 @@ public interface DocenteDAO {
     List<Docente> getNotas(int id);
   
     void delete(String id);
+    
+    Docente getDocente(int idCuenta);
 }

@@ -1,7 +1,9 @@
 package controller;
 
 import factories.MySQL_AlumnosDAO;
+import factories.MySQL_ApoderadoDAO;
 import factories.MySQL_CuentaDAO;
+import factories.MySQL_DocenteDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
@@ -14,7 +16,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import model.Alumno;
+import model.Apoderado;
 import model.Cuenta;
+import model.Docente;
 
 /**
  *
@@ -30,30 +34,50 @@ public class IniciarSesionServlet extends HttpServlet {
             try {
                 //Recibo los datos de Cuenta(Usuario y Pass)
                 MySQL_CuentaDAO cuenta = new MySQL_CuentaDAO();
-                MySQL_AlumnosDAO a = new MySQL_AlumnosDAO();
+                
+                
                 
                 String user, pass;
                 user = request.getParameter("txtUser");
                 pass = request.getParameter("txtPass");
                 
                 Cuenta c = cuenta.getCuenta(user, pass);
+                int privilegio = c.getPrivilegio();
                 
-                if (c.getId() == 1) {
-                    Alumno al = a.getAlumno(user, pass);
+                if (privilegio == 1) {
+                    MySQL_AlumnosDAO a = new MySQL_AlumnosDAO();
+                    
+                    Alumno login = a.getAlumno(c.getId());
                     HttpSession sesion = request.getSession();
-                    sesion.setAttribute("alumno", al);
-                    response.sendRedirect("menuAlumno.jsp");
+                    sesion.setAttribute("sesion", login);
+                    response.sendRedirect("alumno/menuAlumno.jsp?privilegio='"+privilegio+"'");
+                }else if(privilegio == 2){
+                    MySQL_DocenteDAO d = new MySQL_DocenteDAO();
+                    
+                    Docente login = d.getDocente(c.getId());
+                    HttpSession sesion = request.getSession();
+                    sesion.setAttribute("sesion", login);
+                    response.sendRedirect("docente/menuDocente.jsp");
+                }else if(privilegio == 3){
+                    MySQL_ApoderadoDAO a = new MySQL_ApoderadoDAO();
+                    
+                    Apoderado login = a.getApoderado(c.getPrivilegio());
+                    HttpSession sesion = request.getSession();
+                    sesion.setAttribute("sesion", login);
+                    response.sendRedirect("apoderado/menuApoderado.jsp");
+                    
+                
                 }
                 /*Verificar los privilegios
                 1.-Alumno
-                2.-Apoderado
-                3.-Docente
+                2.-Docente
+                3.-Apoderado
             
-                Si es Alumno(1) -> getAlumno(String usuario, String pass). Y creo un objeto Alumno que se SUBE.
-                Si es Apoderado(2) -> getApoderado(String usuario, String pass). Y creo un objeto Alumno que se SUBE.
-                Si es Docente(3) -> getDocente(String usuario, String pass). Y creo un objeto Alumno que se SUBE.
+                Si es Alumno(1) -> getAlumno(int idCuenta). Y creo un objeto Alumno que se SUBE.
+                Si es Apoderado(2) -> getApoderado(int idCuenta). Y creo un objeto Alumno que se SUBE.
+                Si es Docente(3) -> getDocente(int idCuenta). Y creo un objeto Alumno que se SUBE.
             
-                USUARIO Y PASS LOS OBTENGO DESDE LOS DATOS DE CUENTA RECIBIDOS ANTERIORMENTE.
+                
                 */
             } catch (ClassNotFoundException ex) {
                 Logger.getLogger(IniciarSesionServlet.class.getName()).log(Level.SEVERE, null, ex);

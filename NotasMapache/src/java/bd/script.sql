@@ -9,11 +9,15 @@ CREATE TABLE privilegio(
     PRIMARY KEY(id)
 );
 INSERT INTO privilegio VALUES(NULL,'alumno');
+INSERT INTO privilegio VALUES(NULL,'docente');
 INSERT INTO privilegio VALUES(NULL,'apoderado');
 
-SELECT privilegio.id FROM privilegio, cuenta
-WHERE privilegio.id = cuenta.privilegio 
-AND cuenta.usuario = 'pgonzalez';
+
+--SELECT descripcion FROM privilegio WHERE id = 1;
+
+--SELECT privilegio.id FROM privilegio, cuenta
+--WHERE privilegio.id = cuenta.privilegio 
+--AND cuenta.usuario = 'pgonzalez';
 
 CREATE TABLE cuenta(
     id INT AUTO_INCREMENT,
@@ -24,9 +28,12 @@ CREATE TABLE cuenta(
     FOREIGN KEY (privilegio) REFERENCES privilegio(id)
 );
 INSERT INTO cuenta VALUES(NULL, 'pgonzalez', 123456, 1);
-INSERT INTO cuenta VALUES(NULL, 'acamilo', 123456, 2);
+INSERT INTO cuenta VALUES(NULL, 'caravena', 123456, 2);
+INSERT INTO cuenta VALUES(NULL, 'acamilo', 123456, 3);
 
-SELECT * FROM CUENTA WHERE usuario = 'pgonzalez' AND pass = '123456';
+
+--SELECT * FROM CUENTA WHERE usuario = 'pgonzalez' AND pass = '123456';
+
 CREATE TABLE apoderado(
     rut VARCHAR(13) UNIQUE,
     nombre VARCHAR(30),
@@ -36,7 +43,7 @@ CREATE TABLE apoderado(
     FOREIGN KEY (cuenta) REFERENCES cuenta(id)
 );
 
-INSERT INTO apoderado VALUES('11.950.574-7','Angelica','Camilo', 2); 
+INSERT INTO apoderado VALUES('11.950.574-7','Angelica','Camilo', 3); 
 
 CREATE TABLE docente(
     rut VARCHAR(13) UNIQUE,
@@ -49,6 +56,8 @@ CREATE TABLE docente(
     PRIMARY KEY(rut),
     FOREIGN KEY (cuenta) REFERENCES cuenta(id)
 );
+
+INSERT INTO docente VALUES('17.666.666-7', 'Claudio','Aravena', 'Calle Arturo Pratt', 'caravena@gmail.com',2, TRUE);
 
 CREATE TABLE alumno(
     rut VARCHAR(13) UNIQUE,
@@ -64,7 +73,7 @@ CREATE TABLE alumno(
 );
 INSERT INTO alumno VALUES('19.121.033-6', 'Patricio','Gonzalez', 'Calle Boticelli 177', '11.950.574-7',1, TRUE); 
 
-SELECT alumno.rut, alumno.nombre, alumno.apellido, alumno.direccion FROM cuenta, alumno, privilegio WHERE cuenta.privilegio = privilegio.id AND cuenta.usuario = 'pgonzalez' AND cuenta.pass = 123456;
+SELECT * FROM alumno WHERE cuenta = 1;
  
 CREATE TABLE horario(
 	id INT AUTO_INCREMENT,

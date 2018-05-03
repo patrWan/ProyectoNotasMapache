@@ -14,5 +14,5 @@ public interface AlumnoDAO {
   
     void delete(String id);
     
-    Alumno getAlumno(String usuario, String pass);
+    Alumno getAlumno(int idCuenta);
 }
