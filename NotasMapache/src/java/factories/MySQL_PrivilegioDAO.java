@@ -14,14 +14,22 @@ public class MySQL_PrivilegioDAO implements PrivilegioDAO {
     private List<Privilegio> listaPrivilegio;
     private String query;
     private ResultSet rs;
+    
+    MySQL_Conexion c;
 
+    public MySQL_PrivilegioDAO() throws ClassNotFoundException, SQLException {
+        c = new MySQL_Conexion(DatoConexion.MySQL.SERVER, DatoConexion.MySQL.USER, DatoConexion.MySQL.PASS, DatoConexion.MySQL.BD);
+    }
+    
+    
+    
     @Override
     public List<Privilegio> read() {
         try {
             Privilegio priv;
             listaPrivilegio = new ArrayList<>();
             query = "SELECT * FROM privilegio";
-            ResultSet rs = ConexionFactory.getInstance().getConexionDAO(ConexionFactory.Motor.MY_SQL).ejecutarSelect(query);
+            rs = c.ejecutarSelect(query);
             while (rs.next()) {
                 priv = new Privilegio();
                 priv.setId(rs.getInt(1));
@@ -40,7 +48,7 @@ public class MySQL_PrivilegioDAO implements PrivilegioDAO {
     public Privilegio getPrivilegio(int id) {
         Privilegio p = null;
         query = "SELECT descripcion FROM privilegio WHERE id="+id;
-        rs = ConexionFactory.getInstance().getConexionDAO(ConexionFactory.Motor.MY_SQL).ejecutarSelect(query);
+        rs = c.ejecutarSelect(query);
 
         try {
             if (rs.next()) {

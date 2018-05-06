@@ -64,7 +64,7 @@ public class IniciarSesionServlet extends HttpServlet {
                 }else if(privilegio == 3){
                     MySQL_ApoderadoDAO a = new MySQL_ApoderadoDAO();
                     
-                    Apoderado login = a.getApoderado(c.getPrivilegio());
+                    Apoderado login = a.getApoderado(c.getId());
                     HttpSession sesion = request.getSession();
                     sesion.setAttribute("sesion", login);
                     response.sendRedirect("apoderado/menuApoderado.jsp");

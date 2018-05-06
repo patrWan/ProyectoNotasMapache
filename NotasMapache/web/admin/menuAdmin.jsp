@@ -7,7 +7,7 @@
     </head>
     <body>
         <h1>Menu</h1>
-        <a href=''>Registrar Alumno</a><br>
+        <a href='registrarAlumno.jsp'>Registrar Alumno</a><br>
         <a href='registrarDocente.jsp'>Registrar Docente</a><br>
         <a href='../index.jsp'>Volver</a>
     </body>

@@ -2,18 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/C:/Users/Patricio/Desktop/ProyectoNotasMapache/NotasMapache/web/alumno/menuAlumno.jsp</file>
-            <file>file:/C:/Users/Patricio/Desktop/ProyectoNotasMapache/NotasMapache/src/java/dao/PrivilegioDAO.java</file>
-            <file>file:/C:/Users/Patricio/Desktop/ProyectoNotasMapache/NotasMapache/src/java/factories/MySQL_PrivilegioDAO.java</file>
-            <file>file:/C:/Users/Patricio/Desktop/ProyectoNotasMapache/NotasMapache/src/java/controller/IniciarSesionServlet.java</file>
-            <file>file:/C:/Users/Patricio/Desktop/ProyectoNotasMapache/NotasMapache/src/java/factories/MySQL_DocenteDAO.java</file>
-            <file>file:/C:/Users/Patricio/Desktop/ProyectoNotasMapache/NotasMapache/web/index.jsp</file>
-            <file>file:/C:/Users/Patricio/Desktop/ProyectoNotasMapache/NotasMapache/src/java/factories/MySQL_AlumnosDAO.java</file>
-            <file>file:/C:/Users/Patricio/Desktop/ProyectoNotasMapache/NotasMapache/src/java/model/Docente.java</file>
-            <file>file:/C:/Users/Patricio/Desktop/ProyectoNotasMapache/NotasMapache/web/docente/menuDocente.jsp</file>
-            <file>file:/C:/Users/Patricio/Desktop/ProyectoNotasMapache/NotasMapache/src/java/bd/script.sql</file>
-            <file>file:/C:/Users/Patricio/Desktop/ProyectoNotasMapache/NotasMapache/src/java/dao/DocenteDAO.java</file>
-        </group>
+        <group/>
     </open-files>
 </project-private>

@@ -24,7 +24,7 @@ public class MySQL_AlumnosDAO implements AlumnoDAO {
     @Override
     public void create(Alumno a) {
         try {
-            query = "insert into alumno values(null, '" + a.getRut() + "', '" + a.getNombre() + "', '" + a.getApellido() + "', '" + a.getDireccion() + "', '" + a.getApoderado_fk() + "'," + a.getCuenta() + ")";
+            query = "INSERT INTO alumno VALUES('"+a.getRut()+"', '"+a.getNombre()+"','"+a.getApellido()+"', '"+a.getDireccion()+"', '"+a.getApoderado_fk()+"',"+a.getCuenta()+", TRUE);";
             c.ejecutar(query);
         } catch (SQLException ex) {
             Logger.getLogger(MySQL_AlumnosDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -37,17 +37,16 @@ public class MySQL_AlumnosDAO implements AlumnoDAO {
             Alumno a;
             listaAlumnos = new ArrayList<>();
             query = "SELECT * FROM alumno";
-            rs = ConexionFactory.getInstance().getConexionDAO(ConexionFactory.Motor.MY_SQL).ejecutarSelect(query);
+            rs = c.ejecutarSelect(query);
             while (rs.next()) {
                 a = new Alumno();
-                a.setId(rs.getInt(1));
-                a.setRut(rs.getString(2));
-                a.setNombre(rs.getString(3));
-                a.setApellido(rs.getString(4));
-                a.setDireccion(rs.getString(5));
-                a.setApoderado_fk(rs.getInt(6));
-                a.setCuenta(rs.getInt(7));
-                a.setAlumnoActivo(rs.getBoolean(8));
+                a.setRut(rs.getString(1));
+                a.setNombre(rs.getString(2));
+                a.setApellido(rs.getString(3));
+                a.setDireccion(rs.getString(4));
+                a.setApoderado_fk(rs.getString(5));
+                a.setCuenta(rs.getInt(6));
+                a.setAlumnoActivo(rs.getBoolean(7));
 
                 listaAlumnos.add(a);
             }
@@ -83,7 +82,7 @@ public class MySQL_AlumnosDAO implements AlumnoDAO {
     public Alumno getAlumno(int idCuenta) {
         Alumno a = null;
         query="SELECT * FROM alumno WHERE cuenta = "+idCuenta;
-        rs = ConexionFactory.getInstance().getConexionDAO(ConexionFactory.Motor.MY_SQL).ejecutarSelect(query);
+        rs = c.ejecutarSelect(query);
         try {
             if (rs.next()) {
                 a = new Alumno();
@@ -91,7 +90,7 @@ public class MySQL_AlumnosDAO implements AlumnoDAO {
                 a.setNombre(rs.getString(2));
                 a.setApellido(rs.getString(3));
                 a.setDireccion(rs.getString(4));
-                a.setApoderado_fk(rs.getInt(5));
+                a.setApoderado_fk(rs.getString(5));
                 a.setCuenta(rs.getInt(6));
                 a.setAlumnoActivo(rs.getBoolean(7));
             }

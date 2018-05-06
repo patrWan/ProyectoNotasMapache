@@ -1,6 +1,7 @@
 package dao;
 
 import model.Apoderado;
+import model.Cuenta;
 
 public interface ApoderadoDAO {
     void create (Apoderado a);

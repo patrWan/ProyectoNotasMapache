@@ -53,7 +53,7 @@ public class MySQL_DocenteDAO implements DocenteDAO {
     public Docente getDocente(int idCuenta) {
         Docente d = null;
         query="SELECT * FROM docente WHERE cuenta="+idCuenta;
-        rs = ConexionFactory.getInstance().getConexionDAO(ConexionFactory.Motor.MY_SQL).ejecutarSelect(query);
+        rs = c.ejecutarSelect(query);
         try {
             if (rs.next()) {
                 d = new Docente();

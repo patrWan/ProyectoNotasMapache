@@ -39,6 +39,7 @@ public class RegistrarDocenteServlet extends HttpServlet {
             nueva.setId(daoC.listaCuentas().size()+1);
             nueva.setUsuario(usuario);
             nueva.setPass(pass);
+            nueva.setPrivilegio(2);
             
             daoC.crearCuenta(nueva);
             

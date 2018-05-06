@@ -15,8 +15,6 @@ INSERT INTO privilegio VALUES(NULL,'Administrador');
 
 
 --SELECT descripcion FROM privilegio WHERE id = 1;
-SELECT * FROM docente;
-SELECT * FROM cuenta;
 --SELECT privilegio.id FROM privilegio, cuenta
 --WHERE privilegio.id = cuenta.privilegio 
 --AND cuenta.usuario = 'pgonzalez';
@@ -29,10 +27,10 @@ CREATE TABLE cuenta(
     PRIMARY KEY(id),
     FOREIGN KEY (privilegio) REFERENCES privilegio(id)
 );
-INSERT INTO cuenta VALUES(NULL, 'pgonzalez', 123456, 1);
-INSERT INTO cuenta VALUES(NULL, 'caravena', 123456, 2);
-INSERT INTO cuenta VALUES(NULL, 'acamilo', 123456, 3);
-INSERT INTO cuenta VALUES(NULL, 'admin', 'admin', 4);
+INSERT INTO cuenta VALUES(NULL, 'pgonzalez', SHA(123456), 1);
+INSERT INTO cuenta VALUES(NULL, 'caravena', SHA(123456), 2);
+INSERT INTO cuenta VALUES(NULL, 'acamilo', SHA(123456), 3);
+INSERT INTO cuenta VALUES(NULL, 'admin', SHA('admin'), 4);
 
 
 --SELECT * FROM CUENTA WHERE usuario = 'pgonzalez' AND pass = '123456';
@@ -139,3 +137,6 @@ CREATE TABLE alumnoAsistencia(
     FOREIGN KEY (asistencia_fk) REFERENCES asistencia(id)
 );
 
+SELECT * FROM alumno;
+SELECT * FROM apoderado;
+SELECT * FROM cuenta;

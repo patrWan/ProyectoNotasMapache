@@ -23,9 +23,9 @@ public class MySQL_CuentaDAO implements CuentaDAO {
     public Cuenta getCuenta(String user, String pass) {
         Cuenta cu = null;
         try {
-            query="SELECT * FROM CUENTA WHERE usuario = '"+user+"' AND pass = '"+pass+"';";
+            query="SELECT * FROM CUENTA WHERE usuario = '"+user+"' AND pass = SHA('"+pass+"');";
             
-            rs = ConexionFactory.getInstance().getConexionDAO(ConexionFactory.Motor.MY_SQL).ejecutarSelect(query);
+            rs = c.ejecutarSelect(query);
             
             if (rs.next()) {
                 cu = new Cuenta();
@@ -41,10 +41,10 @@ public class MySQL_CuentaDAO implements CuentaDAO {
     }
 
     @Override
-    public void crearCuenta(Cuenta c) {
-        query="INSERT INTO cuenta VALUES(NULL, '"+c.getUsuario()+"', '"+c.getPass()+"', 2);";
+    public void crearCuenta(Cuenta cu) {
+        query="INSERT INTO cuenta VALUES(NULL, '"+cu.getUsuario()+"', SHA('"+cu.getPass()+"'), "+cu.getPrivilegio()+");";
         try {
-            ConexionFactory.getInstance().getConexionDAO(ConexionFactory.Motor.MY_SQL).ejecutar(query);
+            c.ejecutar(query);
         } catch (SQLException ex) {
             Logger.getLogger(MySQL_CuentaDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -56,7 +56,7 @@ public class MySQL_CuentaDAO implements CuentaDAO {
         
             query="SELECT * FROM cuenta;";
             
-            rs = ConexionFactory.getInstance().getConexionDAO(ConexionFactory.Motor.MY_SQL).ejecutarSelect(query);
+            rs = c.ejecutarSelect(query);
             Cuenta cu;
         try {
             while (rs.next()) {

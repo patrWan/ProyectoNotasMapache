@@ -1,17 +1,16 @@
 package model;
 
 public class Alumno {
-    private int id;
     private String rut;
     private String nombre;
     private String apellido;
     private String direccion;
-    private int apoderado_fk;
+    private String apoderado_fk;
     private int cuenta;
     private boolean alumnoActivo;
 
-    public Alumno(int id, String rut, String nombre, String apellido, String direccion, int apoderado_fk, int cuenta, boolean alumnoActivo) {
-        this.id = id;
+    public Alumno(String rut, String nombre, String apellido, String direccion, String apoderado_fk, int cuenta, boolean alumnoActivo) {
+        
         this.rut = rut;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -22,14 +21,6 @@ public class Alumno {
     }
     
     public Alumno() {
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getRut() {
@@ -64,11 +55,11 @@ public class Alumno {
         this.direccion = direccion;
     }
 
-    public int getApoderado_fk() {
+    public String getApoderado_fk() {
         return apoderado_fk;
     }
 
-    public void setApoderado_fk(int apoderado_fk) {
+    public void setApoderado_fk(String apoderado_fk) {
         this.apoderado_fk = apoderado_fk;
     }
 

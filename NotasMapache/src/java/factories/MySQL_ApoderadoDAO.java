@@ -6,6 +6,7 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import model.Apoderado;
+import model.Cuenta;
 
 public class MySQL_ApoderadoDAO implements ApoderadoDAO {
 
@@ -18,14 +19,19 @@ public class MySQL_ApoderadoDAO implements ApoderadoDAO {
     }
     @Override
     public void create(Apoderado a) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        query="INSERT INTO apoderado VALUES('"+a.getRut()+"','"+a.getNombre()+"','"+a.getApellido()+"', "+a.getCuenta()+");";
+        try {
+            c.ejecutar(query);
+        } catch (SQLException ex) {
+            Logger.getLogger(MySQL_ApoderadoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     @Override
     public Apoderado getApoderado(int idCuenta) {
         Apoderado a = null;
         query="SELECT * FROM apoderado WHERE cuenta="+idCuenta;
-        rs = ConexionFactory.getInstance().getConexionDAO(ConexionFactory.Motor.MY_SQL).ejecutarSelect(query);
+        rs = c.ejecutarSelect(query);
         
         try {
             if (rs.next()) {
