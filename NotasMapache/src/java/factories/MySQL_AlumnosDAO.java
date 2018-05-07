@@ -24,7 +24,7 @@ public class MySQL_AlumnosDAO implements AlumnoDAO {
     @Override
     public void create(Alumno a) {
         try {
-            query = "INSERT INTO alumno VALUES('"+a.getRut()+"', '"+a.getNombre()+"','"+a.getApellido()+"', '"+a.getDireccion()+"', '"+a.getApoderado_fk()+"',"+a.getCuenta()+", TRUE);";
+            query = "INSERT INTO alumno VALUES('" + a.getRut() + "', '" + a.getNombre() + "','" + a.getApellido() + "', '" + a.getDireccion() + "', '" + a.getApoderado_fk() + "'," + a.getCuenta() + ", TRUE);";
             c.ejecutar(query);
         } catch (SQLException ex) {
             Logger.getLogger(MySQL_AlumnosDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -75,13 +75,21 @@ public class MySQL_AlumnosDAO implements AlumnoDAO {
 
     @Override
     public void update(Alumno nuevoAlumno) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try {
+            query = "UPDATE alumno SET nombre = " + nuevoAlumno.getNombre() + " "
+                    + ", SET = "+ nuevoAlumno.getApellido()+", set apellido = "+nuevoAlumno.getDireccion()+" "
+                    + ", SET direccion = "+nuevoAlumno.getDireccion()+" "
+                    + "  WHERE id =" + nuevoAlumno.getRut()+";";
+            c.ejecutar(query);
+        } catch (SQLException ex) {
+            Logger.getLogger(MySQL_AlumnosDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     @Override
     public Alumno getAlumno(int idCuenta) {
         Alumno a = null;
-        query="SELECT * FROM alumno WHERE cuenta = "+idCuenta+" and alumnoActivo is TRUE;";
+        query = "SELECT * FROM alumno WHERE cuenta = " + idCuenta + " and alumnoActivo is TRUE;";
         rs = c.ejecutarSelect(query);
         try {
             if (rs.next()) {
@@ -98,9 +106,7 @@ public class MySQL_AlumnosDAO implements AlumnoDAO {
             Logger.getLogger(MySQL_AlumnosDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return a;
-        
+
     }
-    
-    
-    
+
 }

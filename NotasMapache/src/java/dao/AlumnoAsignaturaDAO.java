@@ -13,13 +13,14 @@ import model.AlumnoAsignatura;
  *
  * @author luisp
  */
-public interface AsignaturaAlumnoDAO {
+public interface AlumnoAsignaturaDAO {
     void create(AlumnoAsignatura a);
 
     List<AlumnoAsignatura> read();
 
     void update(AlumnoAsignatura nuevoAlumnoAsignatura);
-     AlumnoAsignatura getAlumno(String rutAlumno);
+     
+    AlumnoAsignatura getAlumno(String rutAlumno);
 
   
   

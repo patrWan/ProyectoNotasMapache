@@ -77,7 +77,7 @@ INSERT INTO alumno VALUES('19.121.033-6', 'Patricio','Gonzalez', 'Calle Boticell
 SELECT * FROM alumno WHERE cuenta = 1;
  
 CREATE TABLE horario(
-	id INT AUTO_INCREMENT,
+    id INT AUTO_INCREMENT,
     horasTotal INT,
     horaInicio TIME,
     horaFin TIME,

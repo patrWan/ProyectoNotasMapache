@@ -22,7 +22,7 @@ public class MySQL_AlumnoAsistenciaDAO implements AlumnoAsistenciaDAO {
     @Override
     public void create(AlumnoAsistencia aa) {
         try {
-            query = "INSERT INTO AlumnoAsistencia VALUES('" + aa.getAlumnoAsinatura_fk() + "', '" + aa.getAsistencia_fk() + "', '" + aa.isAsistido() + "');";
+            query = "INSERT INTO AlumnoAsistencia VALUES(null,'" + aa.getAlumnoAsinatura_fk() + "', '" + aa.getAsistencia_fk() + "', '" + aa.isAsistido() + "');";
             c.ejecutar(query);
         } catch (SQLException ex) {
             Logger.getLogger(MySQL_AlumnosDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -30,8 +30,15 @@ public class MySQL_AlumnoAsistenciaDAO implements AlumnoAsistenciaDAO {
     }
 
     @Override
-    public void update(AlumnoAsistencia aa) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void update(AlumnoAsistencia aa, int id) {
+        try {
+            query = "UPDATE alumnoAsistencia SET alumnoAsignatura_fk =" + aa.getAlumnoAsinatura_fk() + ""
+                    + ", SET asistencia_fk = " + aa.getAsistencia_fk() + " "
+                    + "  WHERE id = "+ id +" ;";
+            c.ejecutar(query);
+        } catch (SQLException ex) {
+            Logger.getLogger(MySQL_AlumnoAsistenciaDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     @Override
