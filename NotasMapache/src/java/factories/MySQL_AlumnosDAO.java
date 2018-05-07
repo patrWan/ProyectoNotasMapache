@@ -36,7 +36,7 @@ public class MySQL_AlumnosDAO implements AlumnoDAO {
         try {
             Alumno a;
             listaAlumnos = new ArrayList<>();
-            query = "SELECT * FROM alumno";
+            query = "SELECT * FROM alumno WHERE alumnoActivo is TRUE ";
             rs = c.ejecutarSelect(query);
             while (rs.next()) {
                 a = new Alumno();
@@ -81,7 +81,7 @@ public class MySQL_AlumnosDAO implements AlumnoDAO {
     @Override
     public Alumno getAlumno(int idCuenta) {
         Alumno a = null;
-        query="SELECT * FROM alumno WHERE cuenta = "+idCuenta;
+        query="SELECT * FROM alumno WHERE cuenta = "+idCuenta+" and alumnoActivo is TRUE;";
         rs = c.ejecutarSelect(query);
         try {
             if (rs.next()) {
@@ -100,5 +100,7 @@ public class MySQL_AlumnosDAO implements AlumnoDAO {
         return a;
         
     }
-
+    
+    
+    
 }

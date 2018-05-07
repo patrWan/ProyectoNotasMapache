@@ -19,7 +19,7 @@ public class MySQL_ApoderadoDAO implements ApoderadoDAO {
     }
     @Override
     public void create(Apoderado a) {
-        query="INSERT INTO apoderado VALUES('"+a.getRut()+"','"+a.getNombre()+"','"+a.getApellido()+"', "+a.getCuenta()+");";
+        query="INSERT INTO apoderado VALUES('"+a.getRut()+"','"+a.getNombre()+"','"+a.getApellido()+"', "+a.getCuenta()+", TRUE);";
         try {
             c.ejecutar(query);
         } catch (SQLException ex) {
@@ -30,7 +30,7 @@ public class MySQL_ApoderadoDAO implements ApoderadoDAO {
     @Override
     public Apoderado getApoderado(int idCuenta) {
         Apoderado a = null;
-        query="SELECT * FROM apoderado WHERE cuenta="+idCuenta;
+        query="SELECT * FROM apoderado WHERE cuenta="+idCuenta + ";";
         rs = c.ejecutarSelect(query);
         
         try {
