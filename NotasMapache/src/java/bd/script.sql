@@ -85,31 +85,27 @@ CREATE TABLE horario(
     PRIMARY KEY(id)
 );
 
-CREATE TABLE mensajeDocente(
-    id INT AUTO_INCREMENT,
-    descripcion VARCHAR(200),
-    PRIMARY KEY(id)
-);
+
 
 CREATE TABLE asignatura(
     id INT AUTO_INCREMENT,
     nombre VARCHAR(200),
     docente_fk VARCHAR(13),
     horario_fk INT,
-    mensajeDocente_fk INT,
+   
     PRIMARY KEY(id),
     FOREIGN KEY (docente_fk) REFERENCES docente(rut),
-    FOREIGN KEY (horario_fk) REFERENCES horario(id),
-    FOREIGN KEY (mensajeDocente_fk) REFERENCES mensajeDocente(id)
+    FOREIGN KEY (horario_fk) REFERENCES horario(id)
+   
 );
 
 CREATE TABLE alumnoAsignatura(
     id INT AUTO_INCREMENT,
     alumno VARCHAR(13),
-    asignatura INT,
+    asignatura_fk INT,
     PRIMARY KEY(id),
     FOREIGN KEY (alumno) REFERENCES alumno(rut),
-    FOREIGN KEY (asignatura) REFERENCES asignatura(id)
+    FOREIGN KEY (asignatura_fk) REFERENCES asignatura(id)
 );
 
 CREATE TABLE nota(
@@ -136,7 +132,30 @@ CREATE TABLE alumnoAsistencia(
     FOREIGN KEY (alumnoAsignatura_fk) REFERENCES alumnoAsignatura(id),
     FOREIGN KEY (asistencia_fk) REFERENCES asistencia(id)
 );
-
+create table curso(
+    id int auto_increment,
+    carrera varchar(50),
+    año int,
+    cantidad_Alumno int,
+    
+    primary key(id)
+ 
+);
+CREATE TABLE mensajeDocente(
+    id INT AUTO_INCREMENT,
+    descripcion VARCHAR(200),
+    curso_fk int,
+    PRIMARY KEY(id),
+    foreign key(curso_fk)references curso(id)
+);
+create table alumno_curso(
+     id int auto_increment,
+     id_curso int,
+     rut_alumno varchar(50),
+     primary key(id),
+     foreign key(id_curso)references curso(id),
+     foreign key(rut_alumno)references alumno(rut)
+);
 SELECT * FROM alumno;
 SELECT * FROM apoderado;
 SELECT * FROM cuenta;
