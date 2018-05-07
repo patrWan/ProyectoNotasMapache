@@ -15,6 +15,7 @@ public class MySQL_AsistenciaDAO implements AsistenciaDAO {
 
     private List<Asistencia> listaAsistencia;
     private String query;
+     private ResultSet rs;
     MySQL_Conexion c;
 
     public MySQL_AsistenciaDAO() throws ClassNotFoundException, SQLException {
