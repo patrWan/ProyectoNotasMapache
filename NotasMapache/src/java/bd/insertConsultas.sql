@@ -69,10 +69,10 @@ insert into alumno_curso values(null,1,'44444');
 insert into asignatura values(null,'Calculo','17.666.666-7',1);
 insert into asignatura values(null,'Java','111',1);
 insert into asignatura values(null,'Cultura','222',1);
-
+select * from asignatura;
 /*asignasion de ramos */
 select * from asignatura
-insert into alumnoAsignatura values(null,'19.121.033-6',1);
+insert into alumnoAsignatura values(null,'19.121.033-6',2);
 insert into alumnoAsignatura values (null,'11111',1);
 insert into alumnoAsignatura values(null,'22222',1);
 insert into alumnoAsignatura values(null,'33333',1);

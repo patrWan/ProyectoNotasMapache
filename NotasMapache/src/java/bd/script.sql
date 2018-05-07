@@ -84,7 +84,7 @@ CREATE TABLE horario(
     dia VARCHAR(50),
     PRIMARY KEY(id)
 );
-
+SELECT * FROM alumnoAsignatura WHERE alumno='19.121.033-6';
 
 
 CREATE TABLE asignatura(
@@ -92,7 +92,6 @@ CREATE TABLE asignatura(
     nombre VARCHAR(200),
     docente_fk VARCHAR(13),
     horario_fk INT,
-   
     PRIMARY KEY(id),
     FOREIGN KEY (docente_fk) REFERENCES docente(rut),
     FOREIGN KEY (horario_fk) REFERENCES horario(id)

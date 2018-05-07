@@ -4,7 +4,9 @@
     Author     : Patricio
 --%>
 
-<%@page import="factories.MySQL_AsignaturaAlumno"%>
+<%@page import="model.Asignatura"%>
+<%@page import="factories.MySQL_asignaturaDAO"%>
+<%@page import="factories.MySQL_AlumnoAsignaturaDAO"%>
 <%@page import="model.AlumnoAsignatura"%>
 <%@page import="factories.MySQL_AlumnosDAO"%>
 <%@page import="model.Privilegio"%>
@@ -26,27 +28,34 @@
         <title>Menu Alumnos</title>
     </head>
     <body>
-        
-        <h1><%out.println("Bienvenido! "+a.getNombre());%></h1>
+        <h1><%out.println("Bienvenido! " + a.getNombre());%></h1><br>
+        <%out.println("Rut: " + a.getRut());%>
         <h2>Asignaturas</h2>
         <%
-            MySQL_AlumnosDAO ma= new MySQL_AlumnosDAO();
-           MySQL_AsignaturaAlumno als= new MySQL_AsignaturaAlumno();
+            MySQL_AlumnosDAO ma = new MySQL_AlumnosDAO();
+            MySQL_AlumnoAsignaturaDAO als = new MySQL_AlumnoAsignaturaDAO();
+            MySQL_asignaturaDAO asignatura = new MySQL_asignaturaDAO();
+            out.println("<table border = '1'>");
+                out.println("<tr>");
+                    out.println("<th>Asignaturas</th>");
+                    out.println("<th>Notas</th>");
+                    out.println("<th>Asistencia</th>");
+                out.println("</tr>");
             for (AlumnoAsignatura al : als.read()) {
-               
-               al= als.getAlumno(a.getRut());
-                   
-               out.println("<label>" + al.getAsignatura_fk()+"</label>");
-                                                
-
+                if (als != null) {
+                    Asignatura asig = asignatura.getAsignatura(al.getAsignatura_fk());
+                    out.println("<tr>");
+                        out.println("<th>"+asig.getNombre()+"</th>");
+                        //out.println("<th><a href=''>Ver Notas</a></th>");
+                        //out.println("<th><a href=''>Ver Asistencia</a></th>");
+                    out.println("</tr>");
+            out.println("</table>");
                 }
+            }
         %>
-        <h1><%out.println("Bienvenido! "+a.getNombre());%></h1>
-        <h1><%out.println("Bienvenido! "+a.getNombre());%></h1>
+
         <%
-            out.println("Rut: " + a.getRut());
             out.println("<br><a href='../cerrarSesion.do'>Cerrar Sesión</a>");
         %>
-          <a href='index.jsp'>Volver</a>
     </body>
 </html>
