@@ -44,8 +44,8 @@
                     //out.println("<th><a href=''>Ver Asistencia</a></th>");
                     out.println("</tr>");
                     out.println("</table>");
-                }
-            }
+                //}
+            //}
         %>
     </body>
 </html>
