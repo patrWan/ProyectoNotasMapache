@@ -21,6 +21,7 @@ INSERT INTO cuenta VALUES(NULL, 'admin', SHA('admin'), 4);    -- 11
 
 SELECT * FROM cuenta;
 
+
 INSERT INTO docente VALUES('10.576.982-7', 'Pablo', 'Guajardo', 'Villa Miraflores 232', 'pguajardo@gmail.com', 5, TRUE);
 INSERT INTO docente VALUES('1111', 'Cristian', 'Miranda', 'Calle Cuchifli', 'cmiranda@gmail.com', 6, TRUE);
 INSERT INTO docente VALUES('2222', 'Daniel', 'Vasquez', 'Calle Arturo Pratt 12', 'dvasquez@gmail.com', 7, TRUE);

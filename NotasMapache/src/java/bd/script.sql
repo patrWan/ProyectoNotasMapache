@@ -12,7 +12,7 @@ INSERT INTO privilegio VALUES(NULL,'alumno');
 INSERT INTO privilegio VALUES(NULL,'docente');
 INSERT INTO privilegio VALUES(NULL,'apoderado');
 INSERT INTO privilegio VALUES(NULL,'Administrador');
-
+SELECT * FROM alumnoAsignatura WHERE alumno = '19.121.033-6';
 
 --SELECT descripcion FROM privilegio WHERE id = 1;
 --SELECT privilegio.id FROM privilegio, cuenta

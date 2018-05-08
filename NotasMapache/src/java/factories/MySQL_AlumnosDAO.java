@@ -112,7 +112,7 @@ public class MySQL_AlumnosDAO implements AlumnoDAO {
     @Override
     public Alumno getAlumnoByApoderado(String idApoderado) {
         Alumno a = null;
-        query = "SELECT * FROM alumno WHERE apoderado_FK = " + idApoderado + " and alumnoActivo is TRUE;";
+        query = "SELECT * FROM alumno WHERE apoderado_FK = '" + idApoderado + "' and alumnoActivo is TRUE;";
         rs = c.ejecutarSelect(query);
         try {
             if (rs.next()) {

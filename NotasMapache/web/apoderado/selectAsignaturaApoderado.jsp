@@ -43,6 +43,7 @@
             out.println("<table border = '1'>");
             out.println("<tr>");
             out.println("<th>Asignaturas</th>");
+            out.println("<th>Alumno</th>");
             out.println("<th>Notas</th>");
             out.println("<th>Asistencia</th>");
             out.println("</tr>");
@@ -52,11 +53,12 @@
                     out.println("<tr>");
                     out.println("<th>" + asig.getNombre() + "</th>");
                     //out.println("<th><a href=''>Ver Notas</a></th>");
-                    //out.println("<th><a href=''>Ver Asistencia</a></th>");
+                    out.println("<th><a href='menuApoderadoAsistencia.jsp?asignaturaId="+al.getId()+"&alumno="+alumno.getNombre()+"'>Ver Asistencia</a></th>");
                     out.println("</tr>");
-                    out.println("</table>");
+                    
                 }
             }
+            out.println("</table>");
         %>
 
     </body>
