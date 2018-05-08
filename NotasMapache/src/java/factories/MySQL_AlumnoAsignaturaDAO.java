@@ -66,9 +66,9 @@ public class MySQL_AlumnoAsignaturaDAO implements AlumnoAsignaturaDAO {
     @Override
     public void update(AlumnoAsignatura nuevoAlumnoAsignatura) {
         try {
-              query = "UPDATE AlumnoAsignatura SET alumno ="+nuevoAlumnoAsignatura.getAlumno_fk()+""
-                + ", SET asignatura_fk = "+nuevoAlumnoAsignatura.getAsignatura_fk()+""
-                + " WHERE id "+nuevoAlumnoAsignatura.getId()+";";
+            query = "UPDATE AlumnoAsignatura SET alumno =" + nuevoAlumnoAsignatura.getAlumno_fk() + ""
+                    + ", SET asignatura_fk = " + nuevoAlumnoAsignatura.getAsignatura_fk() + ""
+                    + " WHERE id " + nuevoAlumnoAsignatura.getId() + ";";
             c.ejecutar(query);
         } catch (SQLException ex) {
             Logger.getLogger(MySQL_AlumnoAsignaturaDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -76,9 +76,9 @@ public class MySQL_AlumnoAsignaturaDAO implements AlumnoAsignaturaDAO {
     }
 
     @Override
-    public AlumnoAsignatura getAlumno(String rutAlumno) {
+    public AlumnoAsignatura getAlumnoByRut(String rutAlumno) {
         AlumnoAsignatura al = null;
-        query = "SELECT * FROM alumnoAsignatura WHERE alumno='"+rutAlumno+"';";
+        query = "SELECT * FROM alumnoAsignatura WHERE alumno='" + rutAlumno + "';";
         rs = c.ejecutarSelect(query);
 
         try {
@@ -87,7 +87,6 @@ public class MySQL_AlumnoAsignaturaDAO implements AlumnoAsignaturaDAO {
                 al.setId(rs.getInt(1));
                 al.setAlumno_fk(rs.getString(2));
                 al.setAsignatura_fk(rs.getInt(3));
-                
 
             }
         } catch (SQLException ex) {
@@ -95,6 +94,27 @@ public class MySQL_AlumnoAsignaturaDAO implements AlumnoAsignaturaDAO {
         }
 
         return al;
+    }
+
+    @Override
+    public List<AlumnoAsignatura> getListAlumnos(String rut) {
+        AlumnoAsignatura a;
+        listaAsignaturas = new ArrayList<>();
+        query = "SELECT * FROM alumnoAsignatura WHERE alumno LIKE ='" + rut + "'";
+        rs = c.ejecutarSelect(query);
+        try {
+            while (rs.next()) {
+                a = new AlumnoAsignatura();
+                a.setId(rs.getInt(1));
+                a.setAlumno_fk(rs.getString(2));
+                a.setAsignatura_fk(rs.getInt(3));
+
+                listaAsignaturas.add(a);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(MySQL_AlumnoAsignaturaDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return listaAsignaturas;
     }
 
 }

@@ -77,9 +77,9 @@ public class MySQL_AlumnosDAO implements AlumnoDAO {
     public void update(Alumno nuevoAlumno) {
         try {
             query = "UPDATE alumno SET nombre = " + nuevoAlumno.getNombre() + " "
-                    + ", SET = "+ nuevoAlumno.getApellido()+", set apellido = "+nuevoAlumno.getDireccion()+" "
-                    + ", SET direccion = "+nuevoAlumno.getDireccion()+" "
-                    + "  WHERE id =" + nuevoAlumno.getRut()+";";
+                    + ", SET = " + nuevoAlumno.getApellido() + ", set apellido = " + nuevoAlumno.getDireccion() + " "
+                    + ", SET direccion = " + nuevoAlumno.getDireccion() + " "
+                    + "  WHERE id =" + nuevoAlumno.getRut() + ";";
             c.ejecutar(query);
         } catch (SQLException ex) {
             Logger.getLogger(MySQL_AlumnosDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -107,6 +107,28 @@ public class MySQL_AlumnosDAO implements AlumnoDAO {
         }
         return a;
 
+    }
+
+    @Override
+    public Alumno getAlumnoByApoderado(String idApoderado) {
+        Alumno a = null;
+        query = "SELECT * FROM alumno WHERE apoderado_FK = " + idApoderado + " and alumnoActivo is TRUE;";
+        rs = c.ejecutarSelect(query);
+        try {
+            if (rs.next()) {
+                a = new Alumno();
+                a.setRut(rs.getString(1));
+                a.setNombre(rs.getString(2));
+                a.setApellido(rs.getString(3));
+                a.setDireccion(rs.getString(4));
+                a.setApoderado_fk(rs.getString(5));
+                a.setCuenta(rs.getInt(6));
+                a.setAlumnoActivo(rs.getBoolean(7));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(MySQL_AlumnosDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return a;
     }
 
 }

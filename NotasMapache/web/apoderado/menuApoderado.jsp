@@ -16,6 +16,10 @@
     </head>
     <body>
         <h1><%out.println("Bienvenido! "+a.getNombre());%></h1>
+        
+        <a href="selectAsignaturaApoderado.jsp">Ver Notas y Asistencia</a>
+        
+        
         <%
             out.println("Rut: " + a.getRut());
             out.println("<br><a href='../cerrarSesion.do'>Cerrar Sesión</a>");

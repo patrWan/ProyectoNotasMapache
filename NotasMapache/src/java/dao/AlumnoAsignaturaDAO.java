@@ -17,10 +17,12 @@ public interface AlumnoAsignaturaDAO {
     void create(AlumnoAsignatura a);
 
     List<AlumnoAsignatura> read();
+    
+    List<AlumnoAsignatura> getListAlumnos(String rut);
 
     void update(AlumnoAsignatura nuevoAlumnoAsignatura);
      
-    AlumnoAsignatura getAlumno(String rutAlumno);
+    AlumnoAsignatura getAlumnoByRut(String rutAlumno);
 
   
   
