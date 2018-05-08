@@ -12,7 +12,7 @@ public interface AsistenciaDAO {
 
     void update(Asistencia a);
 
-    List<Asistencia> getNotas(int id);
+    Asistencia getAsistencia(int id);
     
     void delete(String id);
 }

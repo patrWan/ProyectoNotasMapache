@@ -3,6 +3,7 @@ package factories;
 import dao.AlumnoAsistenciaDAO;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -34,7 +35,7 @@ public class MySQL_AlumnoAsistenciaDAO implements AlumnoAsistenciaDAO {
         try {
             query = "UPDATE alumnoAsistencia SET alumnoAsignatura_fk =" + aa.getAlumnoAsinatura_fk() + ""
                     + ", SET asistencia_fk = " + aa.getAsistencia_fk() + " "
-                    + "  WHERE id = "+ id +" ;";
+                    + "  WHERE id = " + id + " ;";
             c.ejecutar(query);
         } catch (SQLException ex) {
             Logger.getLogger(MySQL_AlumnoAsistenciaDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -42,22 +43,25 @@ public class MySQL_AlumnoAsistenciaDAO implements AlumnoAsistenciaDAO {
     }
 
     @Override
-    public AlumnoAsistencia getAlumnoAsistencia(int id) {
-        AlumnoAsistencia aa = null;
-        query = "SELECT * FROM alumnoAsistencia WHERE id = " + id + ";";
+    public List<AlumnoAsistencia> getAlumnoAsistencia(int id) {
+        AlumnoAsistencia aa;
+        listaAlumnoAsistencia = new ArrayList<>();
+
+        query = "SELECT * FROM alumnoAsistencia WHERE alumnoAsignatura_fk =" + id;
         rs = c.ejecutarSelect(query);
         try {
-            if (rs.next()) {
+            while (rs.next()) {
                 aa = new AlumnoAsistencia();
                 aa.setId(rs.getInt(1));
                 aa.setAlumnoAsinatura_fk(rs.getInt(2));
                 aa.setAsistencia_fk(rs.getInt(3));
-                aa.setAsistido(rs.getBoolean(04));
+                aa.setAsistido(rs.getBoolean(4));
+                listaAlumnoAsistencia.add(aa);
             }
 
         } catch (SQLException ex) {
             Logger.getLogger(MySQL_AlumnoAsistenciaDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return aa;
+        return listaAlumnoAsistencia;
     }
 }

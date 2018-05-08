@@ -15,7 +15,7 @@ public class MySQL_AsistenciaDAO implements AsistenciaDAO {
 
     private List<Asistencia> listaAsistencia;
     private String query;
-     private ResultSet rs;
+    private ResultSet rs;
     MySQL_Conexion c;
 
     public MySQL_AsistenciaDAO() throws ClassNotFoundException, SQLException {
@@ -54,8 +54,22 @@ public class MySQL_AsistenciaDAO implements AsistenciaDAO {
     }
 
     @Override
-    public List<Asistencia> getNotas(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public Asistencia getAsistencia(int id) {
+        Asistencia asis = null;
+        query = "SELECT * FROM asistencia WHERE id =" + id;
+        rs = c.ejecutarSelect(query);
+
+        try {
+            if (rs.next()) {
+                asis = new Asistencia();
+                asis.setId(rs.getInt(1));
+                asis.setFechaHora(rs.getString(2));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(MySQL_AsistenciaDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return asis;
     }
 
     @Override

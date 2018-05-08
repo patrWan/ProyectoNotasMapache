@@ -42,16 +42,17 @@
                     out.println("<th>Asistencia</th>");
                 out.println("</tr>");
             for (AlumnoAsignatura al : als.read()) {
-                if (als != null) {
+                if (al.getAlumno_fk().equals(a.getRut())) {
                     Asignatura asig = asignatura.getAsignatura(al.getAsignatura_fk());
                     out.println("<tr>");
                         out.println("<th>"+asig.getNombre()+"</th>");
-                        //out.println("<th><a href=''>Ver Notas</a></th>");
-                        //out.println("<th><a href=''>Ver Asistencia</a></th>");
+                       out.println("<th><a href='verNotas.jsp?valor="+al.getId()+"'>Ver Notas</a></th>");
+                       out.println("<th><a href='menuAlumnoAsistencia.jsp?asignaturaId="+al.getId()+"'>Ver Asistencia</a></th>");
                     out.println("</tr>");
-            out.println("</table>");
+            
                 }
             }
+            out.println("</table>");
         %>
 
         <%

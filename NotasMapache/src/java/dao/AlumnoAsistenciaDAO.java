@@ -1,5 +1,6 @@
 package dao;
 
+import java.util.List;
 import model.AlumnoAsistencia;
 
 public interface AlumnoAsistenciaDAO {
@@ -8,5 +9,5 @@ public interface AlumnoAsistenciaDAO {
 
     void update(AlumnoAsistencia aa, int id);
 
-    AlumnoAsistencia getAlumnoAsistencia(int id);
+    List<AlumnoAsistencia> getAlumnoAsistencia(int id);
 }

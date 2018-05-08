@@ -27,13 +27,6 @@ CREATE TABLE cuenta(
     PRIMARY KEY(id),
     FOREIGN KEY (privilegio) REFERENCES privilegio(id)
 );
-INSERT INTO cuenta VALUES(NULL, 'pgonzalez', SHA(123456), 1);
-INSERT INTO cuenta VALUES(NULL, 'caravena', SHA(123456), 2);
-INSERT INTO cuenta VALUES(NULL, 'acamilo', SHA(123456), 3);
-INSERT INTO cuenta VALUES(NULL, 'admin', SHA('admin'), 4);
-
-
---SELECT * FROM CUENTA WHERE usuario = 'pgonzalez' AND pass = '123456';
 
 CREATE TABLE apoderado(
     rut VARCHAR(13) UNIQUE,
@@ -43,8 +36,6 @@ CREATE TABLE apoderado(
     PRIMARY KEY(rut),
     FOREIGN KEY (cuenta) REFERENCES cuenta(id)
 );
-
-INSERT INTO apoderado VALUES('11.950.574-7','Angelica','Camilo', 3); 
 
 CREATE TABLE docente(
     rut VARCHAR(13) UNIQUE,
@@ -58,8 +49,6 @@ CREATE TABLE docente(
     FOREIGN KEY (cuenta) REFERENCES cuenta(id)
 );
 
-INSERT INTO docente VALUES('17.666.666-7', 'Claudio','Aravena', 'Calle Arturo Pratt', 'caravena@gmail.com',2, TRUE);
-
 CREATE TABLE alumno(
     rut VARCHAR(13) UNIQUE,
     nombre VARCHAR(30),
@@ -72,10 +61,7 @@ CREATE TABLE alumno(
     FOREIGN KEY (apoderado_FK) REFERENCES apoderado(rut),
     FOREIGN KEY (cuenta) REFERENCES cuenta(id)
 );
-INSERT INTO alumno VALUES('19.121.033-6', 'Patricio','Gonzalez', 'Calle Boticelli 177', '11.950.574-7',1, TRUE); 
 
-SELECT * FROM alumno WHERE cuenta = 1;
- 
 CREATE TABLE horario(
     id INT AUTO_INCREMENT,
     horasTotal INT,
@@ -84,7 +70,6 @@ CREATE TABLE horario(
     dia VARCHAR(50),
     PRIMARY KEY(id)
 );
-SELECT * FROM alumnoAsignatura WHERE alumno='19.121.033-6';
 
 
 CREATE TABLE asignatura(
@@ -158,5 +143,3 @@ create table alumno_curso(
 SELECT * FROM alumno;
 SELECT * FROM apoderado;
 SELECT * FROM cuenta;
-
-SELECT * FROM alumnoAsignatura WHERE alumno='11111'
