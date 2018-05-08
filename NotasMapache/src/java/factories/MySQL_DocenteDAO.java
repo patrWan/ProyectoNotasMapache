@@ -23,7 +23,7 @@ public class MySQL_DocenteDAO implements DocenteDAO {
 
     @Override
     public void create(Docente d, Cuenta cu) {
-        query="INSERT INTO docente VALUES('"+d.getRut()+"', '"+d.getNombre()+"','"+d.getApellido()+"', '"+d.getDireccion()+"', '"+d.getCorreo()+"',"+cu.getId()+", TRUE);";
+        query = "INSERT INTO docente VALUES('" + d.getRut() + "', '" + d.getNombre() + "','" + d.getApellido() + "', '" + d.getDireccion() + "', '" + d.getCorreo() + "'," + cu.getId() + ", TRUE);";
         try {
             c.ejecutar(query);
         } catch (SQLException ex) {
@@ -33,21 +33,21 @@ public class MySQL_DocenteDAO implements DocenteDAO {
 
     @Override
     public List<Docente> read() {
-         try {
+        try {
             Docente d;
             listaDocente = new ArrayList<>();
             query = "SELECT * FROM docente WHERE docenteActivo is TRUE ";
             rs = c.ejecutarSelect(query);
             while (rs.next()) {
                 d = new Docente();
-               d.setRut(rs.getString(1));
-               d.setNombre(rs.getString(2));
-               d.setApellido(rs.getString(3));
-               d.setDireccion(rs.getString(4));
-               d.setCorreo(rs.getString(5));
-               d.setCuenta(rs.getInt(6));
-               d.setDocenteActivo(rs.getBoolean(7));
-                
+                d.setRut(rs.getString(1));
+                d.setNombre(rs.getString(2));
+                d.setApellido(rs.getString(3));
+                d.setDireccion(rs.getString(4));
+                d.setCorreo(rs.getString(5));
+                d.setCuenta(rs.getInt(6));
+                d.setDocenteActivo(rs.getBoolean(7));
+
                 listaDocente.add(d);
             }
 //            
@@ -69,13 +69,18 @@ public class MySQL_DocenteDAO implements DocenteDAO {
 
     @Override
     public void delete(String id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try {
+            query = "DELETE FROM docente WHERE id = '" + id + "';";
+            c.ejecutar(query);
+        } catch (SQLException ex) {
+            Logger.getLogger(MySQL_AlumnosDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     @Override
     public Docente getDocente(int idCuenta) {
         Docente d = null;
-        query="SELECT * FROM docente WHERE cuenta="+idCuenta;
+        query = "SELECT * FROM docente WHERE cuenta=" + idCuenta;
         rs = c.ejecutarSelect(query);
         try {
             if (rs.next()) {
