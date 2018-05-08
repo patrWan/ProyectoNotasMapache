@@ -30,6 +30,9 @@
     <body>
         <h1><%out.println("Bienvenido! " + a.getNombre());%></h1><br>
         <%out.println("Rut: " + a.getRut());%>
+        
+        <a href="verMensajes.jsp">Ver Mensajes Docente</a>
+        
         <h2>Asignaturas</h2>
         <%
             MySQL_AlumnosDAO ma = new MySQL_AlumnosDAO();
