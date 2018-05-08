@@ -78,12 +78,8 @@ public class MySQL_AlumnoAsignaturaDAO implements AlumnoAsignaturaDAO {
     @Override
     public AlumnoAsignatura getAlumno(String rutAlumno) {
         AlumnoAsignatura al = null;
-        query = "SELECT * FROM alumnoAsignatura WHERE alumno=" + rutAlumno;
-        try {
-            c.ejecutar(query);
-        } catch (SQLException ex) {
-            Logger.getLogger(MySQL_AlumnoAsignaturaDAO.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        query = "SELECT * FROM alumnoAsignatura WHERE alumno='"+rutAlumno+"';";
+        rs = c.ejecutarSelect(query);
 
         try {
             if (rs.next()) {
@@ -91,6 +87,7 @@ public class MySQL_AlumnoAsignaturaDAO implements AlumnoAsignaturaDAO {
                 al.setId(rs.getInt(1));
                 al.setAlumno_fk(rs.getString(2));
                 al.setAsignatura_fk(rs.getInt(3));
+                
 
             }
         } catch (SQLException ex) {
