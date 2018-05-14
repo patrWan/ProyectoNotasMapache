@@ -1,6 +1,7 @@
 package dao;
 
 import java.util.List;
+import model.AlumnoNota;
 import model.Nota;
 
 public interface NotaDao {
@@ -9,9 +10,12 @@ public interface NotaDao {
 
     List<Nota> read();
 
-    void update(Nota nuevoNota);
+    void update(float valor, int id);
 
     
     List<Nota> getNotas(int id);
     void delete(String id);
+    
+    List<AlumnoNota> getNotasbyAsignatura(int asignatura);
+    List<AlumnoNota> getNotasbyAsignatura(String rutAlumno);
 }

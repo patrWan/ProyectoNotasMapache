@@ -17,4 +17,5 @@ public interface AlumnoDAO {
     Alumno getAlumno(int idCuenta);
     
     Alumno getAlumnoByApoderado(String idApoderado);
+    List<Alumno> getAlumnoByAsignatura(String idAsignatura);
 }

@@ -83,6 +83,8 @@ CREATE TABLE asignatura(
    
 );
 
+SELECT * FROM asignatura WHERE docente_fk = '10.576.982-7';
+
 CREATE TABLE alumnoAsignatura(
     id INT AUTO_INCREMENT,
     alumno VARCHAR(13),
@@ -91,6 +93,12 @@ CREATE TABLE alumnoAsignatura(
     FOREIGN KEY (alumno) REFERENCES alumno(rut),
     FOREIGN KEY (asignatura_fk) REFERENCES asignatura(id)
 );
+SELECT alumno.rut, alumno.nombre FROM alumnoAsignatura, alumno, asignatura WHERE alumnoAsignatura.alumno = alumno.rut 
+AND alumnoAsignatura.asignatura_fk = asignatura.id AND  asignatura_fk = 1;
+
+SELECT alumnoAsignatura.id FROM alumnoAsignatura, alumno, asignatura 
+WHERE alumnoAsignatura.asignatura_fk = asignatura.id 
+AND alumnoAsignatura.alumno = alumno.rut AND alumnoAsignatura.alumno = '19.121.033-6';
 
 CREATE TABLE nota(
     id INT AUTO_INCREMENT,
@@ -100,6 +108,10 @@ CREATE TABLE nota(
     PRIMARY KEY(id),
     FOREIGN KEY(alumnoAsignatura) REFERENCES alumnoAsignatura(id)
 );
+
+SELECT alumnoAsignatura.id, alumno.rut, alumno.nombre, alumno.apellido FROM alumno, asignatura, alumnoAsignatura
+WHERE alumnoAsignatura.alumno = alumno.rut AND alumnoAsignatura.asignatura_fk = asignatura.id
+AND asignatura.id = 1;
 
 CREATE TABLE asistencia(
 	id INT AUTO_INCREMENT,
