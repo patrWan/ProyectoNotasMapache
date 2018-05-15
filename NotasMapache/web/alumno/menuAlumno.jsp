@@ -49,7 +49,7 @@
                     Asignatura asig = asignatura.getAsignatura(al.getAsignatura_fk());
                     out.println("<tr>");
                         out.println("<th>"+asig.getNombre()+"</th>");
-                       out.println("<th><a href='verNotas.jsp?valor="+al.getId()+"'>Ver Notas</a></th>");
+                       out.println("<th><a href='menuAlumnoNota.jsp?alumnoNotaId="+al.getId()+"'>Ver Notas</a></th>");
                        out.println("<th><a href='menuAlumnoAsistencia.jsp?asignaturaId="+al.getId()+"'>Ver Asistencia</a></th>");
                     out.println("</tr>");
             

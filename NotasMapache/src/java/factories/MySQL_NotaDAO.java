@@ -70,7 +70,7 @@ public class MySQL_NotaDAO implements NotaDao {
         try {
             Nota n;
             listaNotas = new ArrayList<>();
-            query = "SELECT * FROM nota WHERE alumnoAsignatura " + id + "";
+            query = "SELECT * FROM nota WHERE alumnoAsignatura = " + id + "";
             ResultSet rs = ConexionFactory.getInstance().getConexionDAO(ConexionFactory.Motor.MY_SQL).ejecutarSelect(query);
             if (rs.next()) {
                 n = new Nota();

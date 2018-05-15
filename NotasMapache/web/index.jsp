@@ -20,7 +20,7 @@
         <h1>Inicio De Sesión</h1>
         <form method="POST" action="IniciarSesion.do">
             <input type="text" name="txtUser" placeholder="Ingrese Usuario:" required=""><br>
-            <input type="text" name="txtPass" placeholder="Ingrese Contraseña:" required=""><br>
+            <input type="password" name="txtPass" placeholder="Ingrese Contraseña:" required=""><br>
             <input type="submit" value="Iniciar Sesion">
         </form>
     </body>
