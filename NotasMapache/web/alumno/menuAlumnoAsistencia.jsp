@@ -25,6 +25,7 @@
         int alumnoAsignatura = Integer.parseInt(request.getParameter("asignaturaId"));
         MySQL_AlumnoAsistenciaDAO aa = new MySQL_AlumnoAsistenciaDAO();
         MySQL_AsistenciaDAO asistenciaAlumno = new MySQL_AsistenciaDAO();
+        
         out.println("<table border = '1'>");
             out.println("<tr>");
                 out.println("<th>Dia/Hora</th>");

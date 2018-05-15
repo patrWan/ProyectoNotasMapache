@@ -111,8 +111,21 @@ INSERT INTO alumnoAsistencia VALUES(NULL,4,4,TRUE);
 INSERT INTO alumnoAsistencia VALUES(NULL,4,5,TRUE);
 
 
+-- PRUEBA NOTAS------------------
+
+INSERT INTO nota VALUES(NULL, 1, 7, 50);
+INSERT INTO nota VALUES(NULL, 1, 7, 30);
+INSERT INTO nota VALUES(NULL, 1, 6, 20);
+
+INSERT INTO nota VALUES(NULL, 6, 5, 50);
+
+UPDATE nota SET valor = 6 WHERE id = 1;
+SELECT * FROM nota;
+
 
 SELECT * FROM asistencia WHERE id = 5;
+
+SELECT * FROM nota WHERE alumnoAsignatura = 1;
 
 SELECT * FROM alumnoAsistencia WHERE alumnoAsignatura_fk = 5;
 

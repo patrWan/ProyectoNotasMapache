@@ -8,6 +8,7 @@ package dao;
 import java.util.List;
 import model.Alumno;
 import model.AlumnoAsignatura;
+import model.AlumnoAsignaturaId;
 
 /**
  *
@@ -19,6 +20,8 @@ public interface AlumnoAsignaturaDAO {
     List<AlumnoAsignatura> read();
     
     List<AlumnoAsignatura> getListAlumnos(String rut);
+    
+    List<AlumnoAsignaturaId> getListAlumnosAsignaturaId(String asignatura);
 
     void update(AlumnoAsignatura nuevoAlumnoAsignatura);
      

@@ -1,0 +1,48 @@
+/* .class #id*/
+
+.imgInicio{
+    width: 850px;
+    height: 600px;
+}
+
+.formInicio{
+    margin-top: 10px;    
+    padding-left: 880px;
+    font-size: 50px;
+}
+
+.txtInicio{    
+    font-family: Tahoma, Geneva, sans-serif;
+    
+    font-size: 17px;
+    margin-top: -450px; 
+    padding-left: 880px;
+
+
+}
+
+#txtUsuario{
+    font-family: Tahoma, Geneva, sans-serif;
+    
+    font-size: 14px;
+    width: 350px;
+    height: 20px;
+}
+
+#txtPass{
+    font-family: Tahoma, Geneva, sans-serif;
+    
+    font-size: 14px;
+    width: 350px;
+    height: 20px;    
+}
+
+#btnInciarSesion{
+    font-family: Tahoma, Geneva, sans-serif;
+    /*border-radius: 90px 90px 90px 90px;*/
+    font-size: 12px;
+    background-color: #F43209;
+    color: white;
+    width: 110px;
+    height: 30px;
+}

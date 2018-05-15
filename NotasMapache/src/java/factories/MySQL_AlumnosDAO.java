@@ -131,4 +131,30 @@ public class MySQL_AlumnosDAO implements AlumnoDAO {
         return a;
     }
 
+    @Override
+    public List<Alumno> getAlumnoByAsignatura(String idAsignatura) {
+        Alumno a;
+        listaAlumnos = new ArrayList<>();
+        query = "SELECT alumno.rut, alumno.nombre FROM alumno, asignatura, alumnoAsignatura\n"
+                + "WHERE alumnoAsignatura.alumno = alumno.rut AND alumnoAsignatura.asignatura_fk = asignatura.id\n"
+                + "AND asignatura.id ="+idAsignatura;
+
+        rs = c.ejecutarSelect(query);
+
+        try {
+            while (rs.next()) {
+                a = new Alumno();
+                a.setRut(rs.getString(1));
+                a.setNombre(rs.getString(2));
+
+                listaAlumnos.add(a);
+
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(MySQL_NotaDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return listaAlumnos;
+    }
+
 }

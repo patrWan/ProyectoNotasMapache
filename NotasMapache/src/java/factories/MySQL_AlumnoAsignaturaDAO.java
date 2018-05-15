@@ -15,6 +15,7 @@ import model.Alumno;
 import model.AlumnoAsignatura;
 import model.Asistencia;
 import dao.AlumnoAsignaturaDAO;
+import model.AlumnoAsignaturaId;
 
 /**
  *
@@ -23,6 +24,7 @@ import dao.AlumnoAsignaturaDAO;
 public class MySQL_AlumnoAsignaturaDAO implements AlumnoAsignaturaDAO {
 
     private List<AlumnoAsignatura> listaAsignaturas;
+    private List<AlumnoAsignaturaId> listaAsignaturasId;
     private String query;
     MySQL_Conexion c;
     private ResultSet rs;
@@ -100,7 +102,7 @@ public class MySQL_AlumnoAsignaturaDAO implements AlumnoAsignaturaDAO {
     public List<AlumnoAsignatura> getListAlumnos(String rut) {
         AlumnoAsignatura a;
         listaAsignaturas = new ArrayList<>();
-        query = "SELECT * FROM alumnoAsignatura WHERE alumno = '"+rut+"';";
+        query = "SELECT * FROM alumnoAsignatura WHERE alumno = '" + rut + "';";
         rs = c.ejecutarSelect(query);
         try {
             while (rs.next()) {
@@ -117,4 +119,29 @@ public class MySQL_AlumnoAsignaturaDAO implements AlumnoAsignaturaDAO {
         return listaAsignaturas;
     }
 
+    @Override
+    public List<AlumnoAsignaturaId> getListAlumnosAsignaturaId(String asignatura) {
+        AlumnoAsignaturaId a;
+        listaAsignaturasId = new ArrayList<>();
+        query = "SELECT alumnoAsignatura.id, alumno.rut, alumno.nombre, alumno.apellido FROM alumno, asignatura, alumnoAsignatura\n"
+                + "WHERE alumnoAsignatura.alumno = alumno.rut AND alumnoAsignatura.asignatura_fk = asignatura.id\n"
+                + "AND asignatura.id ="+asignatura;
+        rs = c.ejecutarSelect(query);
+        try {
+            while (rs.next()) {
+                a = new AlumnoAsignaturaId();
+                a.setIdAlumnoAsignatura(rs.getInt(1));
+                a.setRut(rs.getString(2));
+                a.setNombre(rs.getString(3));
+                a.setApellido(rs.getString(4));
+
+                listaAsignaturasId.add(a);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(MySQL_AlumnoAsignaturaDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return listaAsignaturasId;
+    }
 }
+
+
