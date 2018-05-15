@@ -125,6 +125,8 @@ SELECT * FROM nota;
 
 SELECT * FROM asistencia WHERE id = 5;
 
+SELECT * FROM nota WHERE alumnoAsignatura = 1;
+
 SELECT * FROM alumnoAsistencia WHERE alumnoAsignatura_fk = 5;
 
 
