@@ -19,7 +19,6 @@
             <input type="text" name="txtRutApoderado" placeholder="Ingrese Rut:" required=""><br>
             <input type="text" name="txtNombreApoderado" placeholder="Ingrese Nombre:" required=""><br>
             <input type="text" name="txtApellidoApoderado" placeholder="Ingrese Apellido:" required=""><br>
-            <input type="text" name="txtUsuarioApoderado" placeholder="Ingrese Usuario:" required=""><br>
             <input type="text" name="txtPassApoderado" placeholder="Ingrese Contraseña:" required=""><br>
             
             <h4>Datos Alumno</h4>
@@ -27,7 +26,6 @@
             <input type="text" name="txtNombreAlumno" placeholder="Ingrese Nombre:" required=""><br>
             <input type="text" name="txtApellidoAlumno" placeholder="Ingrese Apellido:" required=""><br>
             <input type="text" name="txtDireccionAlumno" placeholder="Ingrese Direccion:" required=""><br>
-            <input type="text" name="txtUsuarioAlumno" placeholder="Ingrese Usuario:" required=""><br>
             <input type="text" name="txtPassAlumno" placeholder="Ingrese Contraseña:" required=""><br>
             
             <input type="submit" value="Registrar">

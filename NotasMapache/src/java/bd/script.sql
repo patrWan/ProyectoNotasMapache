@@ -154,4 +154,6 @@ create table alumno_curso(
 );
 SELECT * FROM alumno;
 SELECT * FROM apoderado;
-SELECT * FROM cuenta;
+
+
+

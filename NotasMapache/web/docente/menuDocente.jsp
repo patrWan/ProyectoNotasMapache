@@ -31,12 +31,14 @@
                     out.println("<th>Asignatura</th>");
                     out.println("<th>Ingresar Notas</th>");
                     out.println("<th>Ingresar Asistencia</th>");
+                    out.println("<th>Mensaje</th>");
                 out.println("</tr>");
                 for(Asignatura a : asignatura.getAsignaturaByDocente(d.getRut())){
                     out.println("<tr>");
                         out.println("<th>"+a.getNombre()+"</th>");
                         out.println("<th><a href='menuIngresarNotas.jsp?asignatura="+a.getId()+"'>Ingresar Notas</a></th>");     
                         out.println("<th><a href='menuIngresarAsistencia.jsp'>Ingresar Asistencia</a></th>"); 
+                         out.println("<th><a href='menuDocenteMensaje.jsp?idDocente= "+a.getId()+"'>Mensaje Curso</a></th>");     
                     out.println("</tr>");
                 }
                 

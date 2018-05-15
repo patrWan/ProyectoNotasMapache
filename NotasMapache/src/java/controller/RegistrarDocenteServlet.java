@@ -32,9 +32,26 @@ public class RegistrarDocenteServlet extends HttpServlet {
             apellido = request.getParameter("txtApellido");
             direccion = request.getParameter("txtDireccion");
             correo = request.getParameter("txtCorreo");
-            usuario = request.getParameter("txtUsuario");
-            pass = request.getParameter("txtPass");
             
+            pass = request.getParameter("txtPass");
+            char letra = nombre.charAt(0);
+            usuario = String.valueOf(letra) + apellido;
+            String uservalidacion = usuario;
+            
+            int cont = 0;
+            boolean existe = true;
+            while (existe) {
+                for (Cuenta c : daoC.listaCuentas()) {
+                    if (c.getUsuario().equalsIgnoreCase(usuario)) {
+                        cont += 1;
+                        usuario = uservalidacion + cont;
+                    }
+
+                    System.out.println(usuario);
+                }
+                break;
+
+            }
             Cuenta nueva = new Cuenta();
             nueva.setId(daoC.listaCuentas().size()+1);
             nueva.setUsuario(usuario);
