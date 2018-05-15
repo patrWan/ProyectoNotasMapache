@@ -27,55 +27,94 @@ public class RegistrarAlumnoServlet extends HttpServlet {
             MySQL_CuentaDAO daoC = new MySQL_CuentaDAO();
             MySQL_ApoderadoDAO a = new MySQL_ApoderadoDAO();
             MySQL_AlumnosDAO al = new MySQL_AlumnosDAO();
-            
+
             //Cuenta Apoderado
+            String rutApoderado, nombreApoderado, apellidoApoderado;
+            rutApoderado = request.getParameter("txtRutApoderado");
+            nombreApoderado = request.getParameter("txtNombreApoderado");
+            apellidoApoderado = request.getParameter("txtApellidoApoderado");
             String userApoderado, passApoderado;
-            userApoderado = request.getParameter("txtUsuarioApoderado");
+            char letra = nombreApoderado.charAt(0);
+            userApoderado = String.valueOf(letra) + apellidoApoderado;
+            String uservalidacion = userApoderado;
+            int cont = 0;
+            boolean existe = true;
+            while (existe) {
+                for (Cuenta c : daoC.listaCuentas()) {
+                    if (c.getUsuario().equalsIgnoreCase(userApoderado)) {
+                        cont += 1;
+                        userApoderado = uservalidacion + cont;
+                    }
+
+                    System.out.println(userApoderado);
+                }
+                break;
+
+            }
+
+            System.out.println(userApoderado);
+
             passApoderado = request.getParameter("txtPassApoderado");
-            
+
             Cuenta apoderado = new Cuenta();
             int idCuenta = daoC.listaCuentas().size() + 1;
             apoderado.setId(idCuenta);
             apoderado.setUsuario(userApoderado);
             apoderado.setPass(passApoderado);
             apoderado.setPrivilegio(3);
-            
+
             daoC.crearCuenta(apoderado);
-            
+
             //Datos Apoderado
-            String rutApoderado, nombreApoderado, apellidoApoderado;
-            rutApoderado = request.getParameter("txtRutApoderado");
-            nombreApoderado = request.getParameter("txtNombreApoderado");
-            apellidoApoderado = request.getParameter("txtApellidoApoderado");
-            
             Apoderado nuevo = new Apoderado();
             nuevo.setRut(rutApoderado);
             nuevo.setNombre(nombreApoderado);
             nuevo.setApellido(apellidoApoderado);
             nuevo.setCuenta(daoC.listaCuentas().size());
-            
+
             a.create(nuevo);
-            
+
             //Cuenta Alumno
-            String usuarioAlumno, passAlumno;
-            usuarioAlumno = request.getParameter("txtUsuarioAlumno");
-            passAlumno = request.getParameter("txtPassAlumno");
-            
-            Cuenta alumno = new Cuenta();
-            alumno.setId(daoC.listaCuentas().size() + 1);
-            alumno.setUsuario(usuarioAlumno);
-            alumno.setPass(passAlumno);
-            alumno.setPrivilegio(1);
-            
-            daoC.crearCuenta(alumno);
-            
-            //Datos Alumno
             String rutAlumno, nombreAlumno, apellidoAlumno, direccionAlumno;
             rutAlumno = request.getParameter("txtRutAlumno");
             nombreAlumno = request.getParameter("txtNombreAlumno");
             apellidoAlumno = request.getParameter("txtApellidoAlumno");
             direccionAlumno = request.getParameter("txtDireccionAlumno");
             
+            
+            String usuarioAlumno, passAlumno;
+            
+            passAlumno = request.getParameter("txtPassAlumno");
+            letra = nombreAlumno.charAt(0);
+            usuarioAlumno = String.valueOf(letra) + apellidoAlumno;
+            uservalidacion = usuarioAlumno;
+
+            cont = 0;
+            existe = true;
+            while (existe) {
+                for (Cuenta c : daoC.listaCuentas()) {
+                    if (c.getUsuario().equalsIgnoreCase(usuarioAlumno)) {
+                        cont += 1;
+                        usuarioAlumno = uservalidacion + cont;
+                    }
+
+                    System.out.println(usuarioAlumno);
+                }
+                break;
+
+            }
+
+            Cuenta alumno = new Cuenta();
+            alumno.setId(daoC.listaCuentas().size() + 1);
+            alumno.setUsuario(usuarioAlumno);
+            alumno.setPass(passAlumno);
+            alumno.setPrivilegio(1);
+
+            daoC.crearCuenta(alumno);
+
+            //Datos Alumno
+            
+
             Alumno nuevoAlumno = new Alumno();
             nuevoAlumno.setRut(rutAlumno);
             nuevoAlumno.setNombre(nombreAlumno);
@@ -84,12 +123,11 @@ public class RegistrarAlumnoServlet extends HttpServlet {
             nuevoAlumno.setCuenta(daoC.listaCuentas().size());
             nuevoAlumno.setApoderado_fk(rutApoderado);
             nuevoAlumno.setAlumnoActivo(true);
-            
+
             al.create(nuevoAlumno);
-            
+
             response.sendRedirect("admin/registrarAlumno.jsp");
-            
-            
+
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(RegistrarAlumnoServlet.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
