@@ -11,17 +11,25 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Inicio Sesión</title>
+        <link
+            rel = "stylesheet"
+            href = "css/styles.css"
+            type = "text/css"
+            >
     </head>
     <body>
         <%if (request.getParameter("error") != null) {
-            out.println("<script> alert('Datos Invalidos');</script>");
+                out.println("<script> alert('Datos Invalidos');</script>");
             }
         %>
-        <h1>Inicio De Sesión</h1>
-        <form method="POST" action="IniciarSesion.do">
-            <input type="text" name="txtUser" placeholder="Ingrese Usuario:" required=""><br>
-            <input type="password" name="txtPass" placeholder="Ingrese Contraseña:" required=""><br>
-            <input type="submit" value="Iniciar Sesion">
+
+        <img class="imgInicio" src="images/op2.jpg">
+
+        <h2 class="txtInicio">Introduce Tú Usuario Para Iniciar Sesión</h2>
+        <form class="formInicio" method="POST" action="IniciarSesion.do">
+            <input id="txtUsuario"  type="text" name="txtUser" placeholder="Ingrese Usuario:" required=""><br>
+            <input id="txtPass"  type="password" name="txtPass" placeholder="Ingrese Contraseña:" required=""><br>
+            <input id="btnInciarSesion" type="submit" value="Iniciar Sesion">
         </form>
     </body>
 </html>
