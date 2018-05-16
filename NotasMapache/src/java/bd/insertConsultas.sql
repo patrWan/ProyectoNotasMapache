@@ -134,3 +134,4 @@ SELECT * FROM alumno WHERE cuenta = 2 and alumnoActivo is TRUE
 
 
 
+SELECT * FROM mensajeDocente WHERE id = 1;

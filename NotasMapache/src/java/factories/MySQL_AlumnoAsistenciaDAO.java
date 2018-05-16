@@ -26,7 +26,7 @@ public class MySQL_AlumnoAsistenciaDAO implements AlumnoAsistenciaDAO {
             query = "INSERT INTO AlumnoAsistencia VALUES(null,'" + aa.getAlumnoAsinatura_fk() + "', '" + aa.getAsistencia_fk() + "', '" + aa.isAsistido() + "');";
             c.ejecutar(query);
         } catch (SQLException ex) {
-            Logger.getLogger(MySQL_AlumnosDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(MySQL_AlumnoDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

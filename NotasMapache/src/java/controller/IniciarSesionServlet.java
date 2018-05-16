@@ -1,6 +1,6 @@
 package controller;
 
-import factories.MySQL_AlumnosDAO;
+import factories.MySQL_AlumnoDAO;
 import factories.MySQL_ApoderadoDAO;
 import factories.MySQL_CuentaDAO;
 import factories.MySQL_DocenteDAO;
@@ -48,7 +48,7 @@ public class IniciarSesionServlet extends HttpServlet {
                     int privilegio = c.getPrivilegio();
                 
                 if (privilegio == 1) {
-                    MySQL_AlumnosDAO a = new MySQL_AlumnosDAO();
+                    MySQL_AlumnoDAO a = new MySQL_AlumnoDAO();
                     
                     Alumno login = a.getAlumno(c.getId());
                     HttpSession sesion = request.getSession();

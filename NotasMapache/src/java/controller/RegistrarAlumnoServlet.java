@@ -1,6 +1,6 @@
 package controller;
 
-import factories.MySQL_AlumnosDAO;
+import factories.MySQL_AlumnoDAO;
 import factories.MySQL_ApoderadoDAO;
 import factories.MySQL_CuentaDAO;
 import java.io.IOException;
@@ -26,7 +26,7 @@ public class RegistrarAlumnoServlet extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             MySQL_CuentaDAO daoC = new MySQL_CuentaDAO();
             MySQL_ApoderadoDAO a = new MySQL_ApoderadoDAO();
-            MySQL_AlumnosDAO al = new MySQL_AlumnosDAO();
+            MySQL_AlumnoDAO al = new MySQL_AlumnoDAO();
 
             //Cuenta Apoderado
             String rutApoderado, nombreApoderado, apellidoApoderado;

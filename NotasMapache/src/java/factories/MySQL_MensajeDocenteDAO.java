@@ -48,7 +48,7 @@ public class MySQL_MensajeDocenteDAO implements MensajeDocenteDAO {
             }
 //            
         } catch (SQLException ex) {
-            Logger.getLogger(MySQL_AlumnosDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(MySQL_AlumnoDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return listaMensajeDocente;
     }
@@ -60,14 +60,14 @@ public class MySQL_MensajeDocenteDAO implements MensajeDocenteDAO {
         query = "SELECT * FROM mensajeDocente WHERE id = " + id + ";";
         rs = c.ejecutarSelect(query);
         try {
-            if (rs.next()) {
+            while (rs.next()) {
                 md = new MensajeDocente();
                 md.setId(rs.getInt(1));
                 md.setDescripcion(rs.getString(2));
                 md.setCurso_fk(rs.getInt(3));
             }
         } catch (SQLException ex) {
-            Logger.getLogger(MySQL_AlumnosDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(MySQL_AlumnoDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return md;
     }

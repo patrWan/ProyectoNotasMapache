@@ -5,10 +5,10 @@
 --%>
 
 <%@page import="model.Asignatura"%>
-<%@page import="factories.MySQL_asignaturaDAO"%>
+<%@page import="factories.MySQL_AsignaturaDAO"%>
 <%@page import="factories.MySQL_AlumnoAsignaturaDAO"%>
 <%@page import="model.AlumnoAsignatura"%>
-<%@page import="factories.MySQL_AlumnosDAO"%>
+<%@page import="factories.MySQL_AlumnoDAO"%>
 <%@page import="model.Privilegio"%>
 <%@page import="factories.MySQL_PrivilegioDAO"%>
 <%@page import="model.Alumno"%>
@@ -50,15 +50,17 @@
 
         <div class="barraMenuAbajo">
             <form action="verMensajes.jsp">
-                <button id="verMensaje" type="submit" >Ver Mensajes Docente</button>
+                <% 
+                    out.println("<button id='verMensaje' type='submit' >Ver Mensajes Docente</button>");
+                %>
             </form>
         </div>
 
         <h2 id="titulo1">Mis Asignaturas</h2>
         <%
-            MySQL_AlumnosDAO ma = new MySQL_AlumnosDAO();
+            MySQL_AlumnoDAO ma = new MySQL_AlumnoDAO();
             MySQL_AlumnoAsignaturaDAO als = new MySQL_AlumnoAsignaturaDAO();
-            MySQL_asignaturaDAO asignatura = new MySQL_asignaturaDAO();
+            MySQL_AsignaturaDAO asignatura = new MySQL_AsignaturaDAO();
             out.println("<table id='tablaAlumno'>");
             out.println("<tr class='teerre'>");
             out.println("<th><h1 class='enunciado'>Ramos</h1></th>");

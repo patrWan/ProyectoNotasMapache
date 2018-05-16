@@ -133,7 +133,6 @@ create table curso(
     carrera varchar(50),
     año int,
     cantidad_Alumno int,
-    
     primary key(id)
  
 );

@@ -9,14 +9,14 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import model.Asignatura;
 
-public class MySQL_asignaturaDAO implements AsignaturaDAO {
+public class MySQL_AsignaturaDAO implements AsignaturaDAO {
     private String query;
     MySQL_Conexion c;
     private ResultSet rs;
     
     private List<Asignatura> listaAsignaturas;
 
-    public MySQL_asignaturaDAO() throws ClassNotFoundException, SQLException {
+    public MySQL_AsignaturaDAO() throws ClassNotFoundException, SQLException {
         c = new MySQL_Conexion(DatoConexion.MySQL.SERVER, DatoConexion.MySQL.USER, DatoConexion.MySQL.PASS, DatoConexion.MySQL.BD);
     }
     
@@ -37,7 +37,7 @@ public class MySQL_asignaturaDAO implements AsignaturaDAO {
                 a.setHorario_fk(rs.getInt(4));
             }
         } catch (SQLException ex) {
-            Logger.getLogger(MySQL_asignaturaDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(MySQL_AsignaturaDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         return a;
@@ -61,7 +61,7 @@ public class MySQL_asignaturaDAO implements AsignaturaDAO {
                 listaAsignaturas.add(a);
             }
         } catch (SQLException ex) {
-            Logger.getLogger(MySQL_asignaturaDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(MySQL_AsignaturaDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         return listaAsignaturas;

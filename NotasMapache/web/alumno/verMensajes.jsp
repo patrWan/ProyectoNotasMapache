@@ -1,10 +1,15 @@
-<%-- 
-    Document   : verMensajes
-    Created on : 07-05-2018, 22:44:17
-    Author     : Diego
---%>
+<%@page import="factories.MySQL_MensajeDocenteDAO"%>
 
+<%@page import="model.MensajeDocente"%>
 <%@page import="model.Alumno"%>
+<%@page import="model.Nota"%>
+<%@page import="model.Asignatura"%>
+
+<%@page import="factories.MySQL_AlumnoDAO"%>
+<%@page import="factories.MySQL_NotaDAO"%>
+<%@page import="factories.MySQL_AsignaturaDAO"%>
+<%@page import="factories.MySQL_MensajeDocenteDAO"%>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -26,27 +31,23 @@
         <%out.println("Rut: " + a.getRut());%>
         <h2>Asignaturas</h2>
         <%
-            // MySQL_AlumnosDAO ma = new MySQL_AlumnosDAO();
-            // MySQL_AlumnoAsignaturaDAO als = new MySQL_AlumnoAsignaturaDAO();
-            // MySQL_asignaturaDAO asignatura = new MySQL_asignaturaDAO();
+            //int verMensajeAlumno = Integer.parseInt(request.getParameter("verMensaje"));
+
+            //MySQL_MensajeDocenteDAO mdd = new MySQL_MensajeDocenteDAO();
+
             out.println("<table border = '1'>");
             out.println("<tr>");
             out.println("<th>Docente</th>");
             out.println("<th>Asignatura</th>");
             out.println("<th>Mensaje</th>");
             out.println("</tr>");
-            // for (AlumnoAsignatura al : als.read()) {
-                // if (als != null) {
-                    // Asignatura asig = asignatura.getAsignatura(al.getAsignatura_fk());
-                    out.println("<tr>");
-                    out.println("<th></th>");
-                    //out.println("<th><a href=''>Ver Notas</a></th>");
-                    //out.println("<th><a href=''>Ver Asistencia</a></th>");
-                    out.println("</tr>");
-                    out.println("</table>");
-                //-}
-            //}
+            //out.println(verMensajeAlumno);
+
+           
+
+            out.println("</table>");
+
         %>
-        
+
     </body>
 </html>

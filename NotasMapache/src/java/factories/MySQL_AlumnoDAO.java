@@ -10,14 +10,14 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import model.Alumno;
 
-public class MySQL_AlumnosDAO implements AlumnoDAO {
+public class MySQL_AlumnoDAO implements AlumnoDAO {
 
     private List<Alumno> listaAlumnos;
     private String query;
     private ResultSet rs;
     MySQL_Conexion c;
 
-    public MySQL_AlumnosDAO() throws SQLException, ClassNotFoundException {
+    public MySQL_AlumnoDAO() throws SQLException, ClassNotFoundException {
         c = new MySQL_Conexion(DatoConexion.MySQL.SERVER, DatoConexion.MySQL.USER, DatoConexion.MySQL.PASS, DatoConexion.MySQL.BD);
     }
 
@@ -27,7 +27,7 @@ public class MySQL_AlumnosDAO implements AlumnoDAO {
             query = "INSERT INTO alumno VALUES('" + a.getRut() + "', '" + a.getNombre() + "','" + a.getApellido() + "', '" + a.getDireccion() + "', '" + a.getApoderado_fk() + "'," + a.getCuenta() + ", TRUE);";
             c.ejecutar(query);
         } catch (SQLException ex) {
-            Logger.getLogger(MySQL_AlumnosDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(MySQL_AlumnoDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -52,7 +52,7 @@ public class MySQL_AlumnosDAO implements AlumnoDAO {
             }
 //            
         } catch (SQLException ex) {
-            Logger.getLogger(MySQL_AlumnosDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(MySQL_AlumnoDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return listaAlumnos;
     }
@@ -68,7 +68,7 @@ public class MySQL_AlumnosDAO implements AlumnoDAO {
             query = "DELETE FROM alumno WHERE id = '" + id + "';";
             c.ejecutar(query);
         } catch (SQLException ex) {
-            Logger.getLogger(MySQL_AlumnosDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(MySQL_AlumnoDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }
@@ -82,7 +82,7 @@ public class MySQL_AlumnosDAO implements AlumnoDAO {
                     + "  WHERE id =" + nuevoAlumno.getRut() + ";";
             c.ejecutar(query);
         } catch (SQLException ex) {
-            Logger.getLogger(MySQL_AlumnosDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(MySQL_AlumnoDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -103,7 +103,7 @@ public class MySQL_AlumnosDAO implements AlumnoDAO {
                 a.setAlumnoActivo(rs.getBoolean(7));
             }
         } catch (SQLException ex) {
-            Logger.getLogger(MySQL_AlumnosDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(MySQL_AlumnoDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return a;
 
@@ -126,7 +126,7 @@ public class MySQL_AlumnosDAO implements AlumnoDAO {
                 a.setAlumnoActivo(rs.getBoolean(7));
             }
         } catch (SQLException ex) {
-            Logger.getLogger(MySQL_AlumnosDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(MySQL_AlumnoDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return a;
     }

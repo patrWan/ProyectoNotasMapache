@@ -52,7 +52,7 @@ public class MySQL_DocenteDAO implements DocenteDAO {
             }
 //            
         } catch (SQLException ex) {
-            Logger.getLogger(MySQL_AlumnosDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(MySQL_AlumnoDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return listaDocente;
     }
@@ -73,7 +73,7 @@ public class MySQL_DocenteDAO implements DocenteDAO {
             query = "DELETE FROM docente WHERE id = '" + id + "';";
             c.ejecutar(query);
         } catch (SQLException ex) {
-            Logger.getLogger(MySQL_AlumnosDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(MySQL_AlumnoDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
