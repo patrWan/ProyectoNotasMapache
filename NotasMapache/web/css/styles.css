@@ -1,29 +1,29 @@
 /* .class #id*/
 
 .imgInicio{
-    width: 850px;
-    height: 600px;
+    width: 900px;
+    height: 650px;
 }
 
 .formInicio{
     margin-top: 10px;    
-    padding-left: 880px;
+    padding-left: 900px;
     font-size: 50px;
 }
 
 .txtInicio{    
     font-family: Tahoma, Geneva, sans-serif;
-    
+
     font-size: 17px;
-    margin-top: -450px; 
-    padding-left: 880px;
+    margin-top: -470px; 
+    padding-left: 900px;
 
 
 }
 
 #txtUsuario{
     font-family: Tahoma, Geneva, sans-serif;
-    
+
     font-size: 14px;
     width: 350px;
     height: 20px;
@@ -31,7 +31,7 @@
 
 #txtPass{
     font-family: Tahoma, Geneva, sans-serif;
-    
+
     font-size: 14px;
     width: 350px;
     height: 20px;    
@@ -39,10 +39,171 @@
 
 #btnInciarSesion{
     font-family: Tahoma, Geneva, sans-serif;
-    /*border-radius: 90px 90px 90px 90px;*/
     font-size: 12px;
     background-color: #F43209;
     color: white;
     width: 110px;
     height: 30px;
+}
+
+.btnCerrarSesion{
+    font-family: Tahoma, Geneva, sans-serif;
+    font-size: 15px;
+    background-color: #F43209;
+    color: white;
+    width: 120px;
+    height: 30px;
+
+    margin-left: 1150px;
+    margin-top: 190px;
+
+}
+
+.barraMenuArriba{
+    background-color: #FECB5B;
+    margin-top: -20px;
+    margin-left: -8px;
+    margin-right: -8px;
+
+    padding-bottom: 50px;
+}
+
+.barraMenuAbajo{  
+    background-color: #F39F02;
+    margin-top: 0px;
+    margin-left: -8px;
+    margin-right: -8px;
+}
+
+#ma_nomAlumno{
+    color: white;
+    font-family: Vegur, 'PT Sans', Verdana, Sans-serif;
+    font-size: 13px;
+
+    margin-top: -70px;
+    margin-left: 800px;
+}
+
+#ma_rutAlumno{
+    color: white;
+    font-family: Vegur, 'PT Sans', Verdana, Sans-serif;
+    font-size: 13px;
+
+    margin-top: -10px;
+    margin-left: 800px;
+
+}
+
+#verMensaje{
+    font-family: Tahoma, Geneva, sans-serif;
+    font-size: 18px;
+    border: solid #F39F02;
+    background-color: #F39F02;
+    color: white;
+    margin-left: 200px;
+    margin-top: 10px;
+
+
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+#verMensaje:hover{
+    font-family: Tahoma, Geneva, sans-serif;
+    font-size: 18px;
+    border: solid #FECB5B;
+    background-color: #FECB5B;
+    color: white;
+    margin-left: 200px;
+    margin-top: 10px;
+}
+
+#formCerrarSesion{
+    margin-top: -250px;
+}
+
+.imgLogo{
+    margin-top: 30px;
+}
+
+#titulo1{
+    font-family: Tahoma, Geneva, sans-serif;
+    font-size: 15px;
+
+    color: #989693;
+    
+    margin-top: 70px;
+    margin-left: 60px;
+    
+}
+
+#verNotajspAlu{
+    font-family: Tahoma, Geneva, sans-serif;
+    font-size: 15px;
+
+    padding: 5px;
+
+    text-decoration: none;
+    color: black;
+}
+
+#verAsisjspAlu{
+    font-family: Tahoma, Geneva, sans-serif;
+    font-size: 15px;
+
+    padding: 5px;
+
+    color: black;
+
+    text-decoration: none;
+}
+
+#verNotajspAlu:hover{
+    font-family: Tahoma, Geneva, sans-serif;
+    font-size: 15px;
+
+    padding: 5px;
+
+    text-decoration: none;
+    color: #FECB5B;
+}
+
+#verAsisjspAlu:hover{
+    font-family: Tahoma, Geneva, sans-serif;
+    font-size: 15px;
+
+    padding: 5px;
+
+    color: #FECB5B;
+
+    text-decoration: none;
+}
+
+.enunciado{
+    font-family: Tahoma, Geneva, sans-serif;
+    font-size: 20px;
+
+    padding: 25px;
+
+    color: #989693;
+}
+
+#asignatura{
+    font-family: Tahoma, Geneva, sans-serif;
+    font-size: 15px;
+
+    padding: 5px;
+
+    color: black;
+}
+
+#tablaAlumno{
+    border-collapse: collapse;
+    width: 40%;
+    
+    margin-left: 120px;
+}
+
+.teerre{
+    border-bottom: 1px solid #CCC7C7;
 }

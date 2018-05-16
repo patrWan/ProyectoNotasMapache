@@ -16,6 +16,12 @@
 <!DOCTYPE html>
 <html>
     <head>
+
+        <link
+            rel = "stylesheet"
+            href = "../css/styles.css"
+            type = "text/css"
+            >
         <%
             //MySQL_PrivilegioDAO p = new MySQL_PrivilegioDAO();
             Alumno a = (Alumno) session.getAttribute("sesion");
@@ -28,38 +34,51 @@
         <title>Menu Alumnos</title>
     </head>
     <body>
-        <h1><%out.println("Bienvenido! " + a.getNombre());%></h1><br>
-        <%out.println("Rut: " + a.getRut());%>
-        
-        <a href="verMensajes.jsp">Ver Mensajes Docente</a>
-        
-        <h2>Asignaturas</h2>
+        <div class="barraMenuArriba">
+            
+            <img class="imgLogo" src="../images/logoIntranet.png">
+            
+            
+            <h1 id="ma_nomAlumno"><%out.println("Bienvenid@ : " + a.getNombre());%></h1><br>
+            <h1 id="ma_rutAlumno"><%out.println("Rut : " + a.getRut());%></h1>
+
+
+            <form id="formCerrarSesion" method="POST" action="../cerrarSesion.do">
+                <input class="btnCerrarSesion" type="submit" value="Cerrar Sesión">                
+            </form>
+        </div>
+
+        <div class="barraMenuAbajo">
+            <form action="verMensajes.jsp">
+                <button id="verMensaje" type="submit" >Ver Mensajes Docente</button>
+            </form>
+        </div>
+
+        <h2 id="titulo1">Mis Asignaturas</h2>
         <%
             MySQL_AlumnosDAO ma = new MySQL_AlumnosDAO();
             MySQL_AlumnoAsignaturaDAO als = new MySQL_AlumnoAsignaturaDAO();
             MySQL_asignaturaDAO asignatura = new MySQL_asignaturaDAO();
-            out.println("<table border = '1'>");
-                out.println("<tr>");
-                    out.println("<th>Asignaturas</th>");
-                    out.println("<th>Notas</th>");
-                    out.println("<th>Asistencia</th>");
-                out.println("</tr>");
+            out.println("<table id='tablaAlumno'>");
+            out.println("<tr class='teerre'>");
+            out.println("<th><h1 class='enunciado'>Ramos</h1></th>");
+            out.println("<th><h1 class='enunciado'>Notas</h1></th>");
+            out.println("<th><h1 class='enunciado'>Asistencia</h1></th>");
+            out.println("</tr>");
             for (AlumnoAsignatura al : als.read()) {
                 if (al.getAlumno_fk().equals(a.getRut())) {
                     Asignatura asig = asignatura.getAsignatura(al.getAsignatura_fk());
-                    out.println("<tr>");
-                        out.println("<th>"+asig.getNombre()+"</th>");
-                       out.println("<th><a href='menuAlumnoNota.jsp?alumnoNotaId="+al.getId()+"'>Ver Notas</a></th>");
-                       out.println("<th><a href='menuAlumnoAsistencia.jsp?asignaturaId="+al.getId()+"'>Ver Asistencia</a></th>");
+                    out.println("<tr  class='teerre'>");
+                    //out.println("<th>" + asig.getNombre() + "</th>");
+                    out.println("<th><h1 id='asignatura'>" + asig.getNombre() + "</h1></th>");
+                    out.println("<th><a  id='verNotajspAlu' href='menuAlumnoNota.jsp?alumnoNotaId=" + al.getId() + "'>Ver Notas</a></th>");
+                    out.println("<th><a  id='verAsisjspAlu' href='menuAlumnoAsistencia.jsp?asignaturaId=" + al.getId() + "'>Ver Asistencia</a></th>");
                     out.println("</tr>");
-            
+
                 }
             }
             out.println("</table>");
         %>
 
-        <%
-            out.println("<br><a href='../cerrarSesion.do'>Cerrar Sesión</a>");
-        %>
     </body>
 </html>
