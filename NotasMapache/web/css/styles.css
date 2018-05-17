@@ -291,3 +291,66 @@
     
     text-decoration: none;
 }
+
+#jspIngresarNota{
+    font-family: Tahoma, Geneva, sans-serif;
+    font-size: 15px;
+
+    padding: 5px;
+
+    color: black;
+
+    text-decoration: none;
+}
+
+#jspIngresarNota:hover{
+    font-family: Tahoma, Geneva, sans-serif;
+    font-size: 15px;
+
+    padding: 5px;
+
+    text-decoration: none;
+    color: #FECB5B;
+}
+
+#jspIngresarAsis{
+    font-family: Tahoma, Geneva, sans-serif;
+    font-size: 15px;
+
+    padding: 5px;
+
+    color: black;
+
+    text-decoration: none;
+}
+
+#jspIngresarAsis:hover{
+    font-family: Tahoma, Geneva, sans-serif;
+    font-size: 15px;
+
+    padding: 5px;
+
+    text-decoration: none;
+    color: #FECB5B;
+}
+
+#jspEnviarMensaje{
+    font-family: Tahoma, Geneva, sans-serif;
+    font-size: 15px;
+
+    padding: 5px;
+
+    color: black;
+
+    text-decoration: none;
+}
+
+#jspEnviarMensaje:hover{
+    font-family: Tahoma, Geneva, sans-serif;
+    font-size: 15px;
+
+    padding: 5px;
+
+    text-decoration: none;
+    color: #FECB5B;
+}

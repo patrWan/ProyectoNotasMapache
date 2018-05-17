@@ -7,12 +7,12 @@
 <%@page import="model.AlumnoAsignaturaId"%>
 <%@page import="model.AlumnoAsignatura"%>
 <%@page import="factories.MySQL_AlumnoAsignaturaDAO"%>
-<%@page import="factories.MySQL_AlumnosDAO"%>
+<%@page import="factories.MySQL_AlumnoDAO"%>
 <%@page import="model.Alumno"%>
 <%@page import="model.AlumnoNota"%>
 <%@page import="factories.MySQL_NotaDAO"%>
 <%@page import="model.Asignatura"%>
-<%@page import="factories.MySQL_asignaturaDAO"%>
+<%@page import="factories.MySQL_AsignaturaDAO"%>
 <%@page import="model.Docente"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -35,7 +35,7 @@
         <%
             String asignaturaId = request.getParameter("asignatura");
             MySQL_NotaDAO nota = new MySQL_NotaDAO();
-            MySQL_AlumnosDAO alumno = new MySQL_AlumnosDAO();
+            MySQL_AlumnoDAO alumno = new MySQL_AlumnoDAO();
             MySQL_AlumnoAsignaturaDAO alumnoAsig = new MySQL_AlumnoAsignaturaDAO();
             out.println("<table border = '1'>");
             out.println("<tr>");

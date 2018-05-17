@@ -9,9 +9,7 @@
 <%@page import="model.Asignatura"%>
 <%@page import="model.Asignatura"%>
 <%@page import="model.AlumnoAsignatura"%>
-<%@page import="factories.MySQL_asignaturaDAO"%>
 <%@page import="factories.MySQL_AlumnoAsignaturaDAO"%>
-<%@page import="factories.MySQL_AlumnosDAO"%>
 <%@page import="model.Apoderado"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>

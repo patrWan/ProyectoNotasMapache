@@ -1,16 +1,23 @@
 <%@page import="model.Asignatura"%>
-<%@page import="factories.MySQL_asignaturaDAO"%>
+<%@page import="factories.MySQL_AsignaturaDAO"%>
 <%@page import="factories.MySQL_PrivilegioDAO"%>
 <%@page import="model.Docente"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
-        <%  
+
+        <link
+            rel = "stylesheet"
+            href = "../css/styles.css"
+            type = "text/css"
+            >
+
+        <%
             //MySQL_PrivilegioDAO p = new MySQL_PrivilegioDAO();
-            
-            Docente d = (Docente) session.getAttribute("sesion"); 
-            if(d == null){
+
+            Docente d = (Docente) session.getAttribute("sesion");
+            if (d == null) {
                 response.sendRedirect("error.jsp");
             }
         %>
@@ -18,33 +25,47 @@
         <title>Menu Docentes</title>
     </head>
     <body>
-        
-        <h1><%out.print("Hola! " + d.getNombre());%></h1>
+        <div class="barraMenuArriba">
+
+            <img class="imgLogo" src="../images/logoIntranet.png">
+
+
+            <h1 id="ma_nomAlumno"><%out.println("Bienvenid@ : " + d.getNombre());%></h1><br>
+            <h1 id="ma_rutAlumno"><%out.println("Rut : " + d.getRut());%></h1>
+
+
+            <form id="formCerrarSesion" method="POST" action="../cerrarSesion.do">
+                <input class="btnCerrarSesion" type="submit" value="Cerrar Sesión">                
+            </form>
+        </div>
+        <div class="barraMenuAbajo">
+            <br>
+            <br>
+            <br>
+        </div>
+
+
+
         <%
-            out.println("RutT: " + d.getRut());
-        %>
-        
-        <%
-            MySQL_asignaturaDAO asignatura = new MySQL_asignaturaDAO();
-            out.println("<table border = '1'>");
-                out.println("<tr>");
-                    out.println("<th>Asignatura</th>");
-                    out.println("<th>Ingresar Notas</th>");
-                    out.println("<th>Ingresar Asistencia</th>");
-                    out.println("<th>Mensaje</th>");
+            MySQL_AsignaturaDAO asignatura = new MySQL_AsignaturaDAO();
+            out.println("<table id='tablaAlumno'>");
+            out.println("<tr class='teerre'>");
+            out.println("<th><h1 class='enunciado'>Ramos Impartidos</h1></th>");
+            out.println("<th><h1 class='enunciado'>Ingresar Notas</h1></th>");
+            out.println("<th><h1 class='enunciado'>Ingresar Asistencia</h1></th>");
+            out.println("<th><h1 class='enunciado'>Enviar Mensaje</h1></th>");
+            out.println("</tr>");
+            for (Asignatura a : asignatura.getAsignaturaByDocente(d.getRut())) {
+                out.println("<tr class='teerre'>");
+                //out.println("<th>" + a.getNombre() + "</th>");
+                out.println("<th><h1 id='asignatura'>" + a.getNombre() + "</h1></th>");
+                out.println("<th><a  id='jspIngresarNota'  href='menuIngresarNotas.jsp?asignatura=" + a.getId() + "'>Ingresar Notas</a></th>");
+                out.println("<th><a  id='jspIngresarAsis'  href='menuIngresarAsistencia.jsp'>Ingresar Asistencia</a></th>");
+                out.println("<th><a  id='jspEnviarMensaje'  href='menuDocenteMensaje.jsp?idDocente= " + a.getId() + "'>Mensaje Curso</a></th>");
                 out.println("</tr>");
-                for(Asignatura a : asignatura.getAsignaturaByDocente(d.getRut())){
-                    out.println("<tr>");
-                        out.println("<th>"+a.getNombre()+"</th>");
-                        out.println("<th><a href='menuIngresarNotas.jsp?asignatura="+a.getId()+"'>Ingresar Notas</a></th>");     
-                        out.println("<th><a href='menuIngresarAsistencia.jsp'>Ingresar Asistencia</a></th>"); 
-                         out.println("<th><a href='menuDocenteMensaje.jsp?idDocente= "+a.getId()+"'>Mensaje Curso</a></th>");     
-                    out.println("</tr>");
-                }
-                
+            }
+
             out.println("</table>");
-            
-            out.println("<br><a href='../cerrarSesion.do'>Cerrar Sesión</a>");
         %>
     </body>
 </html>
