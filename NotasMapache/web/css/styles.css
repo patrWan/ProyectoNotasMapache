@@ -131,10 +131,10 @@
     font-size: 15px;
 
     color: #989693;
-    
+
     margin-top: 70px;
     margin-left: 60px;
-    
+
 }
 
 #verNotajspAlu{
@@ -200,10 +200,94 @@
 #tablaAlumno{
     border-collapse: collapse;
     width: 40%;
-    
+
     margin-left: 120px;
 }
 
 .teerre{
     border-bottom: 1px solid #CCC7C7;
+}
+
+#barraMenuAbajoId{
+    background-color: #F39F02;
+    margin-top: 0px;
+    margin-left: -8px;
+    margin-right: -8px;
+    
+    padding-top: 30px;
+    padding-bottom: 10px;
+}
+
+#registrarAlum{
+    font-family: Tahoma, Geneva, sans-serif;
+    font-size: 18px;
+
+    text-decoration: none;
+
+    border: 2px solid #F39F02;
+    background-color: #F39F02;
+    color: white;
+    margin-left: 200px;
+/*    margin-top: 100px;*/
+
+
+/*    padding-top: 10px;
+    padding-bottom: 10px;*/
+
+    border-radius: 0px;
+
+}
+
+
+#registrarAlum:hover{    
+    font-family: Tahoma, Geneva, sans-serif;
+    text-decoration: none;
+    font-size: 18px;
+    border: 2px solid #FECB5B;
+    background-color: #FECB5B;
+    color: white;
+    margin-left: 200px;
+    margin-top: 0px;
+
+    padding: 8px;
+
+    border-radius: 0px;
+}
+
+#registrarDoc{
+    font-family: Tahoma, Geneva, sans-serif;
+    font-size: 18px;
+
+    text-decoration: none;
+
+    border: 2px solid #F39F02;
+    background-color: #F39F02;
+    color: white;
+    margin-left: 50px;
+    
+    margin-top: 100px;
+    /*margin-top: 0px;*/
+
+
+/*    padding-top: 10px;
+    padding-bottom: -100px;*/
+
+    border-radius: 0px;
+}
+
+#registrarDoc:hover{
+    font-family: Tahoma, Geneva, sans-serif;
+    font-size: 18px;
+    border: solid #FECB5B;
+    background-color: #FECB5B;
+    color: white;
+    margin-left: 50px;
+    margin-top: 0px;    
+
+
+    padding: 8px;
+
+    border-radius: 0px;
+    
+    text-decoration: none;
 }
