@@ -141,8 +141,10 @@ CREATE TABLE mensajeDocente(
     id INT AUTO_INCREMENT,
     descripcion VARCHAR(200),
     curso_fk int,
+    alumnoAsignatura_fk int,
     PRIMARY KEY(id),
-    foreign key(curso_fk)references curso(id)
+    foreign key(curso_fk)references curso(id),
+    foreign key(alumnoAsignatura_fk)references alumnoAsignatura(id)
 );
 create table alumno_curso(
      id int auto_increment,
