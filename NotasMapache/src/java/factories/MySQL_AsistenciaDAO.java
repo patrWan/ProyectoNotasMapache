@@ -56,7 +56,7 @@ public class MySQL_AsistenciaDAO implements AsistenciaDAO {
     @Override
     public Asistencia getAsistencia(int id) {
         Asistencia asis = null;
-        query = "SELECT * FROM asistencia WHERE id =" + id;
+        query = "SELECT id, DATE_FORMAT(fechaHora, '%d/%m/%Y | %h:%i:%s %p' ) FROM asistencia WHERE id =" + id;
         rs = c.ejecutarSelect(query);
 
         try {
