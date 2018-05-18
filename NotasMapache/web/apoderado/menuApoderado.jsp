@@ -23,7 +23,7 @@
             if (a == null) {
                 response.sendRedirect("error.jsp");
             }
-              
+
         %>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Menu Apoderados</title>
@@ -31,30 +31,39 @@
     <body>
         <div class="barraMenuArriba">
             <%   Alumno nuevo = new Alumno();
-            MySQL_AlumnoDAO ma = new MySQL_AlumnoDAO();
-                     nuevo=ma.getAlumnoByApoderado(a.getRut());
-                    %>
+                MySQL_AlumnoDAO ma = new MySQL_AlumnoDAO();
+                nuevo = ma.getAlumnoByApoderado(a.getRut());
+            %>
 
             <img class="imgLogo" src="../images/logoIntranet.png">
 
 
             <h1 id="ma_nomAlumno"><%out.println("Bienvenid@ : " + a.getNombre());%></h1><br>
             <h1 id="ma_rutAlumno"><%out.println("Rut : " + a.getRut());%></h1>
-            
-                    <h2 id="titulo1"><%out.println("Asignaturas de  : " + nuevo.getNombre());%></h2>
+
+            <form id="formCerrarSesion" method="POST" action="../cerrarSesion.do">
+                <input class="btnCerrarSesion" type="submit" value="Cerrar Sesión">                
+            </form>
+        </div>
+
+        <div class="barraMenuAbajo">
+            <br>
+            <br>
+        </div>
+
+        <h2 id="titulo1"><%out.println("Asignaturas de  : " + nuevo.getNombre());%></h2>
         <%
-            
+
             MySQL_AlumnoAsignaturaDAO als = new MySQL_AlumnoAsignaturaDAO();
             MySQL_AsignaturaDAO asignatura = new MySQL_AsignaturaDAO();
-         
-           
+
             out.println("<table id='tablaAlumno'>");
             out.println("<tr class='teerre'>");
             out.println("<th><h1 class='enunciado'>Ramos</h1></th>");
             out.println("<th><h1 class='enunciado'>Notas</h1></th>");
             out.println("<th><h1 class='enunciado'>Asistencia</h1></th>");
             out.println("</tr>");
-            
+
             for (AlumnoAsignatura al : als.read()) {
                 if (al.getAlumno_fk().equals(nuevo.getRut())) {
                     Asignatura asig = asignatura.getAsignatura(al.getAsignatura_fk());
@@ -71,17 +80,6 @@
         %>
 
 
-            <form id="formCerrarSesion" method="POST" action="../cerrarSesion.do">
-                <input class="btnCerrarSesion" type="submit" value="Cerrar Sesión">                
-            </form>
-        </div>
-
-        <div class="barraMenuAbajo">
-            <form action="selectAsignaturaApoderado.jsp">
-                <%
-                    out.println("<button id='verMensaje' type='submit' >Ver Notas y Asistencia</button>");
-                %>
-            </form>
-        </div>
     </body>
+
 </html>
