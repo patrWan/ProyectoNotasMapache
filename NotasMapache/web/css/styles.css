@@ -213,7 +213,7 @@
     margin-left: -8px;
     margin-right: -8px;
 
-    padding-top: 30px;
+    padding-top: 20px;
     padding-bottom: 10px;
 }
 
@@ -607,4 +607,55 @@
 
     margin-left: 80px;
     margin-top: 40px;    
+}
+
+#tablaAlumno2{
+    /*border-collapse: collapse;*/
+    width: 70%;
+
+    margin-left: 120px;
+}
+
+.enunciado2{
+    font-family: Tahoma, Geneva, sans-serif;
+    font-size: 13px;
+
+    padding: 7px;
+    padding-right: 30px;
+
+    color: #989693;
+}
+
+#tblVerNotas{
+    margin-top: 40px;
+}
+
+#asignaturaVerNota{
+    font-family: Tahoma, Geneva, sans-serif;
+    font-size: 13px;
+
+    padding: 5px;
+
+    color: black;
+}
+
+#alumNota{
+    font-family: Tahoma, Geneva, sans-serif;
+    font-size: 17px;
+
+    padding: 5px;
+
+    color: black;    
+}
+
+#alumNotaPor{
+    font-family: Tahoma, Geneva, sans-serif;
+    font-size: 11px;
+    
+    margin-top: -31px;
+    margin-left: 34px;
+
+    padding: 2px;
+
+    color: #cccccc;    
 }

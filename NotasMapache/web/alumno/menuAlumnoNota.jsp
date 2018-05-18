@@ -12,6 +12,12 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <link
+            rel = "stylesheet"
+            href = "../css/styles.css"
+            type = "text/css"
+            >
+
         <%
             //MySQL_PrivilegioDAO p = new MySQL_PrivilegioDAO();
             Alumno a = (Alumno) session.getAttribute("sesion");
@@ -24,32 +30,54 @@
         <title>Nota Alumno</title>
     </head>
     <body>
-        <h1>Notas Alumno: <%out.print(a.getNombre() + " " + a.getApellido()); %></h1>
+        <div class="barraMenuArriba">
 
-        <%
-            int alumnoAsignaturaNotaId = Integer.parseInt(request.getParameter("alumnoNotaId"));
-            MySQL_NotaDAO nota = new MySQL_NotaDAO();
-            MySQL_AsignaturaDAO asignatura = new MySQL_AsignaturaDAO();
-            out.println("<table border = '1'>");
-            out.println("<tr>");
-            out.println("<th>Nombre</th>");
-            for (int numNota = 1; numNota <= 10; numNota++) {
-                out.println("<th>Nota N° " + numNota + "</th>");
-            }
-            out.println("</tr>");
+            <img class="imgLogo" src="../images/logoIntranet.png">
 
-            for (Asignatura asig : asignatura.getAsignaturaByAlumno(a.getRut())) {
-                out.println("<tr>");
-                out.println("<td>" + asig.getNombre() + "</td>");
-                for (Nota n : nota.getNotas(asig.getId())) {
-                    out.println("<td>" + n.getValor() + " (" + n.getPorcentaje() + "%)</td>");
+
+            <h1 id="ma_nomAlumno"><%out.println("Bienvenid@ : " + a.getNombre());%></h1><br>
+            <h1 id="ma_rutAlumno"><%out.println("Rut : " + a.getRut());%></h1>
+
+
+            <form id="formCerrarSesion" method="POST" action="../cerrarSesion.do">
+                <input class="btnCerrarSesion" type="submit" value="Cerrar Sesión">                
+            </form>
+        </div>
+
+        <div id="barraMenuAbajoId">
+            <a id="registrarAlum" href='menuAlumno.jsp'>Menú</a>
+            <a id="registrarDoc" href='verMensajes.jsp'>Ver Mensajes Docente</a>
+        </div>
+        <h1 id="titulo2">Sus Calificaciones</h1>
+
+        <div id="tblVerNotas">
+            <%
+                int alumnoAsignaturaNotaId = Integer.parseInt(request.getParameter("alumnoNotaId"));
+                MySQL_NotaDAO nota = new MySQL_NotaDAO();
+                MySQL_AsignaturaDAO asignatura = new MySQL_AsignaturaDAO();
+                out.println("<table id='tablaAlumno2'>");
+                out.println("<tr class='teerre'>");
+                out.println("<th><h1 class='enunciado2'>Ramo</h1></th>");
+                for (int numNota = 1; numNota <= 10; numNota++) {
+                    out.println("<th><h1 class='enunciado2'>Nota N° " + numNota + "</h1></th>");
                 }
                 out.println("</tr>");
-            }
-            out.println("</table>");
+
+                for (Asignatura asig : asignatura.getAsignaturaByAlumno(a.getRut())) {
+                    out.println("<tr class='teerre'>");
+                    //out.println("<td>" + asig.getNombre() + "</td>");
+                    out.println("<td><h1 id='asignaturaVerNota'>" + asig.getNombre() + "</h1></td>");
+                    for (Nota n : nota.getNotas(asig.getId())) {
+                        //out.println("<td>" + n.getValor() + " (" + n.getPorcentaje() + "%)</td>");
+                        out.println("<td><h1 id='alumNota'>" + n.getValor() + "</h1><h1 id='alumNotaPor'>(" + n.getPorcentaje() + "%)</h1></td>");
+                    }
+                    out.println("</tr>");
+                }
+                out.println("</table>");
 
 
-        %>
+            %>
+        </div>
     </body>
 </html>
 
