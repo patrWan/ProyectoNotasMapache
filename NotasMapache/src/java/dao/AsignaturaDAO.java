@@ -7,4 +7,5 @@ public interface AsignaturaDAO {
     Asignatura getAsignatura(int id);
     List<Asignatura> getAsignaturaByDocente(String rutDocente);
     List<Asignatura> getAsignaturaByAlumno(String rutAlumno);
+    List<Asignatura> getAsignaturaBy(int id);
 }

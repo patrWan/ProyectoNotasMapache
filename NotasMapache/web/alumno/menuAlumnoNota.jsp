@@ -52,7 +52,6 @@
 
         <div id="tblVerNotas">
             <%
-                int alumnoAsignaturaNotaId = Integer.parseInt(request.getParameter("alumnoNotaId"));
                 MySQL_NotaDAO nota = new MySQL_NotaDAO();
                 MySQL_AsignaturaDAO asignatura = new MySQL_AsignaturaDAO();
                 out.println("<table id='tablaAlumno2'>");

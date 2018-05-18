@@ -24,7 +24,7 @@ public class MySQL_CuentaDAO implements CuentaDAO {
     public Cuenta getCuenta(String user, String pass) {
         Cuenta cu = null;
         try {
-            query = "SELECT * FROM CUENTA WHERE usuario = '" + user + "' AND pass = SHA('" + pass + "');";
+            query = "SELECT * FROM cuenta WHERE usuario = '" + user + "' AND pass = SHA('" + pass + "');";
 
             rs = c.ejecutarSelect(query);
 

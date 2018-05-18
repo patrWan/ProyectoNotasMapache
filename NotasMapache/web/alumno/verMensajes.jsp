@@ -31,27 +31,34 @@
         <h1><%out.println("Bienvenido! " + a.getNombre());%></h1><br>
         <%out.println("Rut: " + a.getRut());%>
         <h2>Asignaturas</h2>
+
         <%
-            int verMensajeAlumno = Integer.parseInt(request.getParameter("verMensaje"));
+            //int verMensajeAlumno = Integer.parseInt(request.getParameter("verMensaje"));
             //1.-
-            AlumnoAsignatura nuevoAa = new AlumnoAsignatura();
+            Asignatura nuevoAsignatura = new Asignatura();
+            AlumnoAsignatura nuevoAlumnoAsignatura = new AlumnoAsignatura();
             MensajeDocente nuevoMenDocD = new MensajeDocente();
             //2.-
+            MySQL_AsignaturaDAO asignaturaD = new MySQL_AsignaturaDAO();
             MySQL_AlumnoAsignaturaDAO alumnoAsignaturaD = new MySQL_AlumnoAsignaturaDAO();
             MySQL_MensajeDocenteDAO mensajeDocenteD = new MySQL_MensajeDocenteDAO();
             //3.-
-            nuevoAa = alumnoAsignaturaD.getAlumnoByRut(a.getRut());
+            nuevoAlumnoAsignatura = alumnoAsignaturaD.getAlumnoByRut(a.getRut());
+
             out.println("<table border = '1'>");
             out.println("<tr>");
-            out.println("<th>Docente</th>");
             out.println("<th>Asignatura</th>");
             out.println("<th>Mensaje</th>");
             out.println("</tr>");
 
-            for (MensajeDocente md : mensajeDocenteD.getMensajeDocenteByAlumnoAsignatura(nuevoAa.getId())) {
+            for (MensajeDocente md : mensajeDocenteD.getMensajeDocenteByAlumnoAsignatura(nuevoAlumnoAsignatura.getId())) {
                 out.println("<tr>");
-                out.println("<td>" + md.getDescripcion()+ "</td>");
+                for (Asignatura as : asignaturaD.getAsignaturaBy(nuevoAlumnoAsignatura.getAsignatura_fk())) {
+                    out.println("<td>" + as.getNombre() + "</td>");
+                    out.println("<td>" + md.getDescripcion() + "</td>");
+                }
                 out.println("</tr>");
+
             }
             out.println("</table>");
 

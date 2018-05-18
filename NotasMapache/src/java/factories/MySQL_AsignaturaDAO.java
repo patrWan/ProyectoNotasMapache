@@ -72,7 +72,7 @@ public class MySQL_AsignaturaDAO implements AsignaturaDAO {
         listaAsignaturas = new ArrayList<>();
         query = "SELECT asignatura.id, asignatura.nombre FROM alumnoAsignatura, alumno, asignatura \n"
                 + "WHERE alumnoAsignatura.asignatura_fk = asignatura.id \n"
-                + "AND alumnoAsignatura.alumno = alumno.rut AND alumnoAsignatura.alumno = '"+rutAlumno+"';";
+                + "AND alumnoAsignatura.alumno = alumno.rut AND alumnoAsignatura.alumno = '" + rutAlumno + "';";
         rs = c.ejecutarSelect(query);
 
         try {
@@ -80,6 +80,30 @@ public class MySQL_AsignaturaDAO implements AsignaturaDAO {
                 a = new Asignatura();
                 a.setId(rs.getInt(1));
                 a.setNombre(rs.getString(2));
+
+                listaAsignaturas.add(a);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(MySQL_AsignaturaDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return listaAsignaturas;
+    }
+
+    @Override
+    public List<Asignatura> getAsignaturaBy(int id) {
+        Asignatura a;
+        listaAsignaturas = new ArrayList<>();
+        query = "SELECT * FROM asignatura WHERE id = " + id + ";";
+        rs = c.ejecutarSelect(query);
+
+        try {
+            while (rs.next()) {
+                a = new Asignatura();
+                a.setId(rs.getInt(1));
+                a.setNombre(rs.getString(2));
+                a.setDocente_fk(rs.getString(3));
+                a.setHorario_fk(rs.getInt(4));
 
                 listaAsignaturas.add(a);
             }
