@@ -24,7 +24,7 @@ public class MySQL_MensajeDocenteDAO implements MensajeDocenteDAO {
     @Override
     public void create(MensajeDocente md) {
         try {
-            query = "INSERT INTO mensajeDocente VALUES(null, '" + md.getDescripcion() + "', " + md.getCurso_fk() + " ); ";
+            query = "INSERT INTO mensajeDocente VALUES(null, '" + md.getDescripcion() + "', " + md.getCurso_fk() + ", " + md.getAlumnoAsignatura_fk()+ " ); ";
             c.ejecutar(query);
         } catch (SQLException ex) {
             Logger.getLogger(MySQL_MensajeDocenteDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -44,6 +44,7 @@ public class MySQL_MensajeDocenteDAO implements MensajeDocenteDAO {
                 md.setId(rs.getInt(1));
                 md.setDescripcion(rs.getString(2));
                 md.setCurso_fk(rs.getInt(3));
+                md.setAlumnoAsignatura_fk(rs.getInt(4));
                 listaMensajeDocente.add(md);
             }
 //            
@@ -57,7 +58,7 @@ public class MySQL_MensajeDocenteDAO implements MensajeDocenteDAO {
     public MensajeDocente getMensajeDocente(int id) {
         MensajeDocente md = null;
         listaMensajeDocente = new ArrayList<>();
-        query = "SELECT * FROM mensajeDocente WHERE id = " + id + ";";
+        query = "SELECT * FROM mensajeDocente WHERE alumnoAsignatura_fk = " + id + ";";
         rs = c.ejecutarSelect(query);
         try {
             while (rs.next()) {
@@ -65,6 +66,7 @@ public class MySQL_MensajeDocenteDAO implements MensajeDocenteDAO {
                 md.setId(rs.getInt(1));
                 md.setDescripcion(rs.getString(2));
                 md.setCurso_fk(rs.getInt(3));
+                md.setAlumnoAsignatura_fk(rs.getInt(4));
             }
         } catch (SQLException ex) {
             Logger.getLogger(MySQL_AlumnoDAO.class.getName()).log(Level.SEVERE, null, ex);

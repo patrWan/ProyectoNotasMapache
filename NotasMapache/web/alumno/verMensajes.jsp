@@ -1,16 +1,17 @@
-<%@page import="factories.MySQL_MensajeDocenteDAO"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 
-<%@page import="model.MensajeDocente"%>
 <%@page import="model.Alumno"%>
-<%@page import="model.Nota"%>
+<%@page import="model.Docente"%>
 <%@page import="model.Asignatura"%>
+<%@page import="model.AlumnoAsignatura"%>
+<%@page import="model.MensajeDocente"%>
 
 <%@page import="factories.MySQL_AlumnoDAO"%>
-<%@page import="factories.MySQL_NotaDAO"%>
+<%@page import="factories.MySQL_DocenteDAO"%>
 <%@page import="factories.MySQL_AsignaturaDAO"%>
+<%@page import="factories.MySQL_AlumnoAsignaturaDAO"%>
 <%@page import="factories.MySQL_MensajeDocenteDAO"%>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -31,21 +32,24 @@
         <%out.println("Rut: " + a.getRut());%>
         <h2>Asignaturas</h2>
         <%
-            //int verMensajeAlumno = Integer.parseInt(request.getParameter("verMensaje"));
+            int verMensajeAlumno = Integer.parseInt(request.getParameter("verMensaje"));
 
-            //MySQL_MensajeDocenteDAO mdd = new MySQL_MensajeDocenteDAO();
-
+            MySQL_AlumnoDAO alumnoD = new MySQL_AlumnoDAO();
+            MySQL_AlumnoAsignaturaDAO alumnoAsignaturaD = new MySQL_AlumnoAsignaturaDAO();
+            MySQL_MensajeDocenteDAO mensajeDocenteD = new MySQL_MensajeDocenteDAO();
+            
+            
             out.println("<table border = '1'>");
             out.println("<tr>");
             out.println("<th>Docente</th>");
             out.println("<th>Asignatura</th>");
             out.println("<th>Mensaje</th>");
             out.println("</tr>");
-            //out.println(verMensajeAlumno);
-
-           
-
+             
+            
+            
             out.println("</table>");
+
 
         %>
 
