@@ -1,3 +1,6 @@
+<%@page import="model.AlumnoNota"%>
+<%@page import="model.Asignatura"%>
+<%@page import="factories.MySQL_AsignaturaDAO"%>
 <%@page import="java.util.List"%>
 <%@page import="factories.MySQL_AlumnoAsignaturaDAO"%>
 <%@page import="model.Alumno"%>
@@ -25,25 +28,24 @@
 
         <%
             int alumnoAsignaturaNotaId = Integer.parseInt(request.getParameter("alumnoNotaId"));
-
-            MySQL_NotaDAO aln = new MySQL_NotaDAO();
-            
+            MySQL_NotaDAO nota = new MySQL_NotaDAO();
+            MySQL_AsignaturaDAO asignatura = new MySQL_AsignaturaDAO();
             out.println("<table border = '1'>");
             out.println("<tr>");
-            out.println("<th>Nota</th>");
-            out.println("<th>Porcentaje</th>");
+            out.println("<th>Nombre</th>");
+            for (int numNota = 1; numNota <= 10; numNota++) {
+                out.println("<th>Nota N° " + numNota + "</th>");
+            }
             out.println("</tr>");
-            out.println(alumnoAsignaturaNotaId);
 
-            for (Nota n  : aln.getNotas(alumnoAsignaturaNotaId)) {
+            for (Asignatura asig : asignatura.getAsignaturaByAlumno(a.getRut())) {
                 out.println("<tr>");
-                
-                out.println("<th>" + n.getValor()+ "</th>");
-                out.println("<th>" + n.getPorcentaje()+ "</th>");
-
+                out.println("<td>" + asig.getNombre() + "</td>");
+                for (Nota n : nota.getNotas(asig.getId())) {
+                    out.println("<td>" + n.getValor() + " (" + n.getPorcentaje() + "%)</td>");
+                }
                 out.println("</tr>");
             }
-
             out.println("</table>");
 
 

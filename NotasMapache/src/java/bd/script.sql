@@ -96,7 +96,7 @@ CREATE TABLE alumnoAsignatura(
 SELECT alumno.rut, alumno.nombre FROM alumnoAsignatura, alumno, asignatura WHERE alumnoAsignatura.alumno = alumno.rut 
 AND alumnoAsignatura.asignatura_fk = asignatura.id AND  asignatura_fk = 1;
 
-SELECT alumnoAsignatura.id FROM alumnoAsignatura, alumno, asignatura 
+SELECT asignatura.nombre FROM alumnoAsignatura, alumno, asignatura 
 WHERE alumnoAsignatura.asignatura_fk = asignatura.id 
 AND alumnoAsignatura.alumno = alumno.rut AND alumnoAsignatura.alumno = '19.121.033-6';
 
@@ -108,6 +108,7 @@ CREATE TABLE nota(
     PRIMARY KEY(id),
     FOREIGN KEY(alumnoAsignatura) REFERENCES alumnoAsignatura(id)
 );
+SELECT nota.valor, nota.porcentaje FROM nota WHERE alumnoAsignatura = 1;
 
 SELECT alumnoAsignatura.id, alumno.rut, alumno.nombre, alumno.apellido FROM alumno, asignatura, alumnoAsignatura
 WHERE alumnoAsignatura.alumno = alumno.rut AND alumnoAsignatura.asignatura_fk = asignatura.id
@@ -156,3 +157,9 @@ SELECT * FROM apoderado;
 
 
 
+SELECT alumno.rut, alumno.nombre, nota.valor, nota.porcentaje, nota.id 
+FROM nota, alumno, asignatura, alumnoAsignatura
+WHERE nota.alumnoAsignatura = alumnoAsignatura.id
+AND alumnoAsignatura.alumno = alumno.rut 
+AND alumnoAsignatura.asignatura_fk = asignatura.id
+AND alumno.rut = '19.121.033-6' AND asignatura.id = 2

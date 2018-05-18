@@ -77,7 +77,6 @@ public class MySQL_NotaDAO implements NotaDao {
                 n.setId(rs.getInt(1));
                 n.setAlumnoAsinatura_fk(rs.getInt(2));
                 n.setValor(rs.getInt(3));
-
                 n.setPorcentaje(rs.getInt(4));
                 listaNotas.add(n);
             }
@@ -128,13 +127,13 @@ public class MySQL_NotaDAO implements NotaDao {
     }
 
     @Override
-    public List<AlumnoNota> getNotasbyAsignatura(String rutAlumno) {
+    public List<AlumnoNota> getNotasbyAsignatura(String rutAlumno, int asignaturaId) {
         AlumnoNota an;
         listaAlumnoNotas = new ArrayList<>();
         query = "SELECT alumno.rut, alumno.nombre, nota.valor, nota.porcentaje, nota.id FROM nota, alumno, asignatura, alumnoAsignatura\n"
                 + "WHERE nota.alumnoAsignatura = alumnoAsignatura.id \n"
                 + "AND alumnoAsignatura.alumno = alumno.rut AND alumnoAsignatura.asignatura_fk = asignatura.id\n"
-                + "AND alumno.rut = '"+rutAlumno+"';";
+                + "AND alumno.rut = '"+rutAlumno+"' AND asignatura.id ="+asignaturaId;
         
         rs = c.ejecutarSelect(query);
         
@@ -157,5 +156,6 @@ public class MySQL_NotaDAO implements NotaDao {
 
         return listaAlumnoNotas;
     }
+
 
 }

@@ -34,6 +34,7 @@
         <% out.println("Asignatura: "); %>
         <%
             String asignaturaId = request.getParameter("asignatura");
+            int asignaturaID = Integer.parseInt(asignaturaId);
             MySQL_NotaDAO nota = new MySQL_NotaDAO();
             MySQL_AlumnoDAO alumno = new MySQL_AlumnoDAO();
             MySQL_AlumnoAsignaturaDAO alumnoAsig = new MySQL_AlumnoAsignaturaDAO();
@@ -48,7 +49,7 @@
                 for (Alumno ann : alumno.getAlumnoByAsignatura(asignaturaId)) {
                     out.println("<tr>");
                     out.println("<td>" + ann.getNombre() + "</td>");
-                    for (AlumnoNota an : nota.getNotasbyAsignatura(ann.getRut())) {
+                    for (AlumnoNota an : nota.getNotasbyAsignatura(ann.getRut(), asignaturaID)) {
                         out.println("<td>" + an.getValor() + " (" + an.getPorcentaje() + "%)</td>");
                     }
                     out.println("</tr>");
@@ -58,7 +59,7 @@
                 for (Alumno ann : alumno.getAlumnoByAsignatura(asignaturaId)) {
                     out.println("<tr>");
                     out.println("<td>" + ann.getNombre() + "</td>");
-                    for (AlumnoNota an : nota.getNotasbyAsignatura(ann.getRut())) {
+                    for (AlumnoNota an : nota.getNotasbyAsignatura(ann.getRut(), asignaturaID)) {
                         out.println("<td>" + an.getValor() + " (" + an.getPorcentaje() + "%) <b>ID: "+an.getNotaId()+"</b></td>");
                     }
                     out.println("</tr>");

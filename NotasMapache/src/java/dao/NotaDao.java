@@ -17,5 +17,5 @@ public interface NotaDao {
     void delete(String id);
     
     List<AlumnoNota> getNotasbyAsignatura(int asignatura);
-    List<AlumnoNota> getNotasbyAsignatura(String rutAlumno);
+    List<AlumnoNota> getNotasbyAsignatura(String rutAlumno, int asignaturaId);
 }
