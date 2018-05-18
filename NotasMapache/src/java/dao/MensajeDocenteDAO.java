@@ -11,5 +11,5 @@ public interface MensajeDocenteDAO {
 
     MensajeDocente getMensajeDocente(int id);
     
-    
+    List<MensajeDocente> getMensajeDocenteByAlumnoAsignatura (int idAlumnoAsig);
 }

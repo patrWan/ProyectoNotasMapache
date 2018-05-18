@@ -33,21 +33,26 @@
         <h2>Asignaturas</h2>
         <%
             int verMensajeAlumno = Integer.parseInt(request.getParameter("verMensaje"));
-
-            MySQL_AlumnoDAO alumnoD = new MySQL_AlumnoDAO();
+            //1.-
+            AlumnoAsignatura nuevoAa = new AlumnoAsignatura();
+            MensajeDocente nuevoMenDocD = new MensajeDocente();
+            //2.-
             MySQL_AlumnoAsignaturaDAO alumnoAsignaturaD = new MySQL_AlumnoAsignaturaDAO();
             MySQL_MensajeDocenteDAO mensajeDocenteD = new MySQL_MensajeDocenteDAO();
-            
-            
+            //3.-
+            nuevoAa = alumnoAsignaturaD.getAlumnoByRut(a.getRut());
             out.println("<table border = '1'>");
             out.println("<tr>");
             out.println("<th>Docente</th>");
             out.println("<th>Asignatura</th>");
             out.println("<th>Mensaje</th>");
             out.println("</tr>");
-             
-            
-            
+
+            for (MensajeDocente md : mensajeDocenteD.getMensajeDocenteByAlumnoAsignatura(nuevoAa.getId())) {
+                out.println("<tr>");
+                out.println("<td>" + md.getDescripcion()+ "</td>");
+                out.println("</tr>");
+            }
             out.println("</table>");
 
 

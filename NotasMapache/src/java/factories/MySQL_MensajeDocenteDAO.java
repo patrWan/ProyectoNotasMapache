@@ -24,7 +24,7 @@ public class MySQL_MensajeDocenteDAO implements MensajeDocenteDAO {
     @Override
     public void create(MensajeDocente md) {
         try {
-            query = "INSERT INTO mensajeDocente VALUES(null, '" + md.getDescripcion() + "', " + md.getCurso_fk() + ", " + md.getAlumnoAsignatura_fk()+ " ); ";
+            query = "INSERT INTO mensajeDocente VALUES(null, '" + md.getDescripcion() + "', " + md.getCurso_fk() + ", " + md.getAlumnoAsignatura_fk() + " ); ";
             c.ejecutar(query);
         } catch (SQLException ex) {
             Logger.getLogger(MySQL_MensajeDocenteDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -61,7 +61,7 @@ public class MySQL_MensajeDocenteDAO implements MensajeDocenteDAO {
         query = "SELECT * FROM mensajeDocente WHERE alumnoAsignatura_fk = " + id + ";";
         rs = c.ejecutarSelect(query);
         try {
-            while (rs.next()) {
+            if (rs.next()) {
                 md = new MensajeDocente();
                 md.setId(rs.getInt(1));
                 md.setDescripcion(rs.getString(2));
@@ -72,6 +72,28 @@ public class MySQL_MensajeDocenteDAO implements MensajeDocenteDAO {
             Logger.getLogger(MySQL_AlumnoDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return md;
+    }
+
+    @Override
+    public List<MensajeDocente> getMensajeDocenteByAlumnoAsignatura(int idAlumnoAsig) {
+        try {
+            MensajeDocente md;
+            listaMensajeDocente = new ArrayList<>();
+            query = "SELECT * FROM mensajeDocente WHERE alumnoAsignatura_fk = " + idAlumnoAsig + ";";
+            rs = c.ejecutarSelect(query);
+            while (rs.next()) {
+                md = new MensajeDocente();
+                md.setId(rs.getInt(1));
+                md.setDescripcion(rs.getString(2));
+                md.setCurso_fk(rs.getInt(3));
+                md.setAlumnoAsignatura_fk(rs.getInt(4));
+                listaMensajeDocente.add(md);
+            }
+//            
+        } catch (SQLException ex) {
+            Logger.getLogger(MySQL_AlumnoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return listaMensajeDocente;
     }
 
 }
