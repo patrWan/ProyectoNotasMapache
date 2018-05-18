@@ -18,7 +18,6 @@
     margin-top: -470px; 
     padding-left: 900px;
 
-
 }
 
 #txtUsuario{
@@ -213,7 +212,7 @@
     margin-top: 0px;
     margin-left: -8px;
     margin-right: -8px;
-    
+
     padding-top: 30px;
     padding-bottom: 10px;
 }
@@ -228,11 +227,11 @@
     background-color: #F39F02;
     color: white;
     margin-left: 200px;
-/*    margin-top: 100px;*/
+    /*    margin-top: 100px;*/
 
 
-/*    padding-top: 10px;
-    padding-bottom: 10px;*/
+    /*    padding-top: 10px;
+        padding-bottom: 10px;*/
 
     border-radius: 0px;
 
@@ -264,13 +263,13 @@
     background-color: #F39F02;
     color: white;
     margin-left: 50px;
-    
+
     margin-top: 100px;
     /*margin-top: 0px;*/
 
 
-/*    padding-top: 10px;
-    padding-bottom: -100px;*/
+    /*    padding-top: 10px;
+        padding-bottom: -100px;*/
 
     border-radius: 0px;
 }
@@ -288,7 +287,7 @@
     padding: 8px;
 
     border-radius: 0px;
-    
+
     text-decoration: none;
 }
 
@@ -353,4 +352,259 @@
 
     text-decoration: none;
     color: #FECB5B;
+}
+
+#formRegDocente{
+    margin-left: 150px;
+    margin-top: 30px;
+
+    font-family: Tahoma, Geneva, sans-serif;
+    font-size: 14px;
+
+    color: black;
+
+}
+
+#titulo2{
+    font-family: Tahoma, Geneva, sans-serif;
+    font-size: 22px;
+
+    color: #989693;
+
+    margin-top: 40px;
+    margin-left: 60px;
+}
+
+#txtRegRutDo{
+    font-family: Tahoma, Geneva, sans-serif;
+    font-size: 18px;
+
+    color: black;
+    height: 20px;
+    width: 343px;
+
+    margin-left: 30px;
+}
+
+#txtRegNomDo{
+    font-family: Tahoma, Geneva, sans-serif;
+    font-size: 18px;
+
+    color: black;
+
+    height: 20px;
+    width: 163px;
+
+    margin-left: 30px;
+    margin-top: 20px;
+}
+
+#txtRegApeDo{
+    font-family: Tahoma, Geneva, sans-serif;
+    font-size: 18px;
+
+    color: black;
+    height: 20px;
+    width: 171px;
+
+    margin-left: 0px;
+}
+
+#txtRegDirecDo{
+    font-family: Tahoma, Geneva, sans-serif;
+    font-size: 18px;
+
+    color: black;
+    height: 20px;
+    width: 19em;
+
+    margin-left: 30px;
+    margin-top: 20px;
+}
+
+#txtRegCoDo{
+    font-family: Tahoma, Geneva, sans-serif;
+    font-size: 18px;
+
+    color: black;
+    height: 20px;
+    width: 19em;
+
+    margin-left: 30px;
+    margin-top: 20px;
+}
+
+#txtRegUserDo{
+    font-family: Tahoma, Geneva, sans-serif;
+    font-size: 18px;
+
+    color: black;
+    height: 20px;
+    width: 163px;
+
+    margin-left: 30px;
+    margin-top: 20px;
+}
+
+#txtRegPassDo{
+    font-family: Tahoma, Geneva, sans-serif;
+    font-size: 18px;
+
+    color: black;
+    height: 20px;
+    width: 171px;
+
+    margin-left: 0px;
+    margin-top: 20px;
+}
+
+#btnRegistrarDocente{
+    font-family: Tahoma, Geneva, sans-serif;
+    font-size: 20px;
+    background-color: #F39F02;
+    color: white;
+
+    height: 35px;
+    width: 183px;
+
+    margin-left: 80px;
+    margin-top: 40px;
+}
+
+#titulo3{
+    font-family: Tahoma, Geneva, sans-serif;
+    font-size: 24px;
+
+    color: #989693;
+
+    margin-top: 40px;
+    margin-left: 60px;
+}
+
+#subtitulo1{
+    font-family: Tahoma, Geneva, sans-serif;
+    font-size: 16px;
+
+    color: #989693;
+
+    margin-top: 40px;
+    margin-left: 150px;
+}
+
+#subtitulo2{
+    font-family: Tahoma, Geneva, sans-serif;
+    font-size: 16px;
+
+    color: #989693;
+
+    margin-top: -40px;
+    margin-left: 35em;
+}
+
+#divDatosApo{
+    font-family: Tahoma, Geneva, sans-serif;
+    font-size: 16px;
+
+    color: #989693;
+
+    margin-top: 40px;
+    margin-left: 12em;
+}
+
+#divDatosAlum{
+    font-family: Tahoma, Geneva, sans-serif;
+    font-size: 16px;
+
+    color: #989693;
+
+    margin-top: -165px;
+    margin-left: 38em;
+}
+
+.txtApo{
+    font-family: Tahoma, Geneva, sans-serif;
+    font-size: 18px;
+
+    color: black;
+    height: 20px;
+    width: 191px;
+
+    margin-left: 0px;
+    margin-top: 20px;
+}
+
+#txtRegRutAlu{
+    font-family: Tahoma, Geneva, sans-serif;
+    font-size: 18px;
+
+    color: black;
+    height: 20px;
+    width: 343px;
+
+    /*margin-left: 20px;*/
+
+}
+
+#txtRegNomAlu{    
+    font-family: Tahoma, Geneva, sans-serif;
+    font-size: 18px;
+
+    color: black;
+
+    height: 20px;
+    width: 163px;
+
+    margin-top: 20px;
+
+}
+
+#txtRegApeAlu{
+    font-family: Tahoma, Geneva, sans-serif;
+    font-size: 18px;
+
+    color: black;
+    height: 20px;
+    width: 171px;
+
+    margin-left: 0px;
+
+}
+
+#txtRegDirecAlu{
+
+    font-family: Tahoma, Geneva, sans-serif;
+    font-size: 18px;
+
+    color: black;
+    height: 20px;
+    width: 19em;
+
+    margin-top: 20px;
+
+}
+
+#txtRegPassAlu{
+
+    font-family: Tahoma, Geneva, sans-serif;
+    font-size: 18px;
+
+    color: black;
+    height: 20px;
+    width: 19em;
+
+    margin-top: 20px;
+
+}
+
+#btnRegistrarAlumno{    
+    font-family: Tahoma, Geneva, sans-serif;
+    font-size: 20px;
+    background-color: #F39F02;
+    color: white;
+
+    height: 35px;
+    width: 183px;
+
+    margin-left: 80px;
+    margin-top: 40px;    
 }
