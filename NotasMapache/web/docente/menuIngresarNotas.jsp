@@ -18,6 +18,11 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <link
+            rel = "stylesheet"
+            href = "../css/styles.css"
+            type = "text/css"
+            >
         <%
             //MySQL_PrivilegioDAO p = new MySQL_PrivilegioDAO();
 
@@ -30,65 +35,104 @@
         <title>Menu Notas</title>
     </head>
     <body>
-        <h1>Ingreso de Notas</h1>
-        <% out.println("Asignatura: "); %>
+        <div class="barraMenuArriba">
+
+            <img class="imgLogo" src="../images/logoIntranet.png">
+
+
+            <h1 id="ma_nomAlumno"><%out.println("Bienvenid@ : " + d.getNombre());%></h1><br>
+            <h1 id="ma_rutAlumno"><%out.println("Rut : " + d.getRut());%></h1>
+
+
+            <form id="formCerrarSesion" method="POST" action="../cerrarSesion.do">
+                <input class="btnCerrarSesion" type="submit" value="Cerrar Sesión">                
+            </form>
+        </div>
+        <div class="barraMenuAbajo">
+            <br>
+            <br>
+            <br>
+        </div>
+
+
+        <h1 id="titulo4">Ingreso de Notas</h1>
+
+
+        <% out.println("<h1 id='titulo5'>Seleccione Alumno : </h1>"); %>
+
         <%
             String asignaturaId = request.getParameter("asignatura");
             int asignaturaID = Integer.parseInt(asignaturaId);
             MySQL_NotaDAO nota = new MySQL_NotaDAO();
             MySQL_AlumnoDAO alumno = new MySQL_AlumnoDAO();
             MySQL_AlumnoAsignaturaDAO alumnoAsig = new MySQL_AlumnoAsignaturaDAO();
-            out.println("<table border = '1'>");
-            out.println("<tr>");
-            out.println("<th>Nombre</th>");
+
+            out.println("<div id='cboAs'>");
+            out.println("<form method='POST' action='../ingresarNota.do?asignatura=" + asignaturaId + "'>");
+
+            out.println("<select id='cboSelectAlumno' name='cboAlumno'>");
+            for (AlumnoAsignaturaId ann : alumnoAsig.getListAlumnosAsignaturaId(asignaturaId)) {
+                out.println("<option value='" + ann.getIdAlumnoAsignatura() + "'>" + ann.getNombre() + " " + ann.getApellido() + "</option>");
+            }
+            out.println("</select><br>");
+            
+            out.println("<br>");
+            
+            out.println("<input id='regValorNota' type='number' name='txtNota' placeholder='Nota : ' required='' step='0.1' min='1.0' max='7.0'>");
+            out.println("<input id='regPorNota'  type='number' name='txtPorcentaje' placeholder='% : ' required='' step='0.1' min='1.0' max='100.0'>");
+            out.println("<input id='btnIngresarNota' type='submit' value='Ingresar Nota'>");
+            out.println("</form>");
+            out.println("</div>");
+            
+            out.println("<br>");
+            out.println("<br>");
+            
+
+            out.println("<table id='tablaAlumno2'>");
+            out.println("<tr class='teerre'>");
+            out.println("<th><h1 class='enunciado2'>Nombre</h1></th>");
             for (int numNota = 1; numNota <= 10; numNota++) {
-                out.println("<th>Nota N° " + numNota + "</th>");
+                out.println("<th><h1 class='enunciado2'>Nota N° " + numNota + "</h1></th>");
             }
             out.println("</tr>");
             if (request.getParameter("modificar") == null) {
                 for (Alumno ann : alumno.getAlumnoByAsignatura(asignaturaId)) {
-                    out.println("<tr>");
-                    out.println("<td>" + ann.getNombre() + "</td>");
+                    out.println("<tr class='teerre'>");
+                    //out.println("<td>" + ann.getNombre() + "</td>");
+                    out.println("<td><h1 id='asignaturaVerNota'>" + ann.getNombre() + "</h1></td>");
                     for (AlumnoNota an : nota.getNotasbyAsignatura(ann.getRut(), asignaturaID)) {
-                        out.println("<td>" + an.getValor() + " (" + an.getPorcentaje() + "%)</td>");
+                       //out.println("<td>" + an.getValor() + " (" + an.getPorcentaje() + "%)</td>");
+                       out.println("<td><h1 id='alumNota'>" + an.getValor() + "</h1><h1 id='alumNotaPor'>(" + an.getPorcentaje() + "%)</h1></td>");
                     }
                     out.println("</tr>");
                 }
                 out.println("</table>");
-            }else{
+            } else {
                 for (Alumno ann : alumno.getAlumnoByAsignatura(asignaturaId)) {
-                    out.println("<tr>");
-                    out.println("<td>" + ann.getNombre() + "</td>");
+                    out.println("<tr class='teerre'>");
+                    out.println("<td><h1 id='asignaturaVerNota'>" + ann.getNombre() + "</h1></td>");
                     for (AlumnoNota an : nota.getNotasbyAsignatura(ann.getRut(), asignaturaID)) {
-                        out.println("<td>" + an.getValor() + " (" + an.getPorcentaje() + "%) <b>ID: "+an.getNotaId()+"</b></td>");
+                       out.println("<td><h1 id='alumNota'>" + an.getValor() + "</h1><h1 id='alumNotaPor'>(" + an.getPorcentaje() + "%)</h1></td>");
                     }
                     out.println("</tr>");
                 }
                 out.println("</table>");
             }
+        %>
 
-        %>
-        
+
         <%
-            out.println("<form method='POST' action='../ingresarNota.do?asignatura="+asignaturaId+"'>");
-                out.println("<select name='cboAlumno'>");
-                for(AlumnoAsignaturaId ann : alumnoAsig.getListAlumnosAsignaturaId(asignaturaId)){
-                    out.println("<option value='"+ann.getIdAlumnoAsignatura()+"'>"+ann.getNombre()+" "+ann.getApellido()+"</option>");
-                }
-                out.println("</select>");
-                out.println("<input type='text' name='txtNota' placeholder='Ingrese nota: ' required=''>");
-                out.println("<input type='text' name='txtPorcentaje' placeholder='Ingrese porcentaje: ' required=''>");
-                out.println("<input type='submit' value='Ingresar Nota'>");
-            out.println("</form>");
-        %>
-        <%
-        out.println("<a href='menuIngresarNotas.jsp?asignatura=" + asignaturaId + "&modificar=si'>Modificar nota</a>");
+        out.println("<br>");
+        out.println("<br>");
         
+        if (request.getParameter("modificar")== null) {
+        out.println("<a id='modificarNota' href='menuIngresarNotas.jsp?asignatura=" + asignaturaId + "&modificar=si'>Modificar nota</a>");
+        }
         if (request.getParameter("modificar")!= null) {
           out.println("<form method='POST' action='../modificarNota.do?asignatura="+asignaturaId+"'>");
-            out.println("<input type='number' name='txtId' placeholder='Ingrese ID de la nota: ' required=''>");
-            out.println("<input type='text' name='txtNotaNueva' placeholder='Ingrese nueva nota: ' required=''>");
-            out.println("<input type='submit' value='Modificar Nota'>");
+            out.println("<input id='idNotaModi' type='number' name='txtId' placeholder='ID Nota: ' required=''>");
+            out.println("<input id='nuevaNota' type='number' name='txtNotaNueva' placeholder='Nota: ' required='' step='0.1' min='1.0' max='7.0'>");
+            out.println("<input id='btnModificarNota' type='submit' value='Modificar Nota'>");
           out.println("</form>");
         }
         %>

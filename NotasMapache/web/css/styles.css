@@ -704,10 +704,10 @@
 #tituloUno{
     font-family: Tahoma, Geneva, sans-serif;
     font-size: 18px;
-    
+
     margin-top: 30px;
     margin-left: 30px;
-        
+
 
     color: #989693;
 }
@@ -715,7 +715,7 @@
 #tituloDos{
     font-family: Tahoma, Geneva, sans-serif;
     font-size: 18px;
-    
+
     margin-top: -37px;
     margin-left: 130px;
 
@@ -728,14 +728,14 @@
 
     margin-top: -37px;
     margin-left: 210px;
-    
+
     color: #989693;
 }
 
 #tituloCuatro{
     font-family: Tahoma, Geneva, sans-serif;
     font-size: 18px;
-    
+
     margin-top: -37px;
     margin-left: 380px;
 
@@ -747,7 +747,126 @@
     font-size: 19px;
 
     padding: 5px;
-    
+
     margin-left: 80px;
     color: black; 
+}
+
+#cboSelectAlumno{
+    font-family: Tahoma, Geneva, sans-serif;
+    font-size: 14px;
+
+    width: 200px;
+
+    margin-left: 300px;
+}
+
+#cboAs{
+    font-family: Tahoma, Geneva, sans-serif;
+    /*font-size: 12px;*/
+
+    margin-top: -30px;
+    margin-left: -50px;
+
+}
+
+#regValorNota{
+    font-family: Tahoma, Geneva, sans-serif;
+    font-size: 16px;
+
+    width: 100px;
+    margin-top: -50px;
+
+    margin-left: 200px;
+}
+
+#regPorNota{
+    font-family: Tahoma, Geneva, sans-serif;
+    font-size: 16px;
+
+    width: 100px;
+    margin-top: -50px;
+    /*margin-left: 100px;*/    
+}
+
+#btnIngresarNota{
+    font-family: Tahoma, Geneva, sans-serif;
+    font-size: 14px;
+    background-color: #F39F02;
+    color: white;
+
+    height: 28px;
+    width: 153px;
+
+    /*    margin-left: 80px;
+        margin-top: 40px; */
+}
+
+#titulo4{
+    font-family: Tahoma, Geneva, sans-serif;
+    font-size: 17px;
+
+    color: #989693;
+
+    margin-top: 30px;
+    margin-left: 60px;
+}
+
+#titulo5{
+    font-family: Tahoma, Geneva, sans-serif;
+    font-size: 14px;
+
+    color: #F39F02;
+
+    margin-top: 20px;
+    margin-left: 80px;
+}
+
+#modificarNota{
+    font-family: Tahoma, Geneva, sans-serif;
+    font-size: 18px;
+
+    text-decoration: none;
+
+    border: 2px solid #F39F02;
+    background-color: #F39F02;
+    color: white;
+    margin-left: 90px;
+    /*    margin-top: 100px;*/
+
+
+    padding: 6px;
+    /*padding-bottom: 10px;*/
+
+    border-radius: 0px;
+}
+
+#idNotaModi{
+    font-family: Tahoma, Geneva, sans-serif;
+    font-size: 16px;
+
+    width: 100px;
+
+    margin-left: 160px;    
+}
+
+#nuevaNota{
+    font-family: Tahoma, Geneva, sans-serif;
+    font-size: 16px;
+
+    width: 100px;
+    margin-top: -50px;
+
+    margin-left: 0px;    
+}
+
+
+#btnModificarNota{
+    font-family: Tahoma, Geneva, sans-serif;
+    font-size: 14px;
+    background-color: #F39F02;
+    color: white;
+
+    height: 28px;
+    width: 153px;
 }
