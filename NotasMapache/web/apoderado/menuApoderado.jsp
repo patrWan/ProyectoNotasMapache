@@ -48,6 +48,8 @@
 
         <div class="barraMenuAbajo">
             <br>
+            <a id="registrarAlum" href='certificadoAlumnoRegularApo.jsp'>Certificado Alumno Regular</a>
+            <br>
             <br>
         </div>
 

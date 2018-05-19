@@ -49,11 +49,11 @@
         </div>
 
         <div class="barraMenuAbajo">
-            <form action="verMensajes.jsp">
-                <% 
-                    out.println("<button id='verMensaje' type='submit' >Ver Mensajes Docente</button>");
-                %>
-            </form>
+            <br>
+            <a id="registrarAlum" href='certificadoAlumnoRegularAlum.jsp'>Certificado Alumno Regular</a>
+            <a id="registrarDoc" href='verMensajes.jsp'>Ver Mensajes Docente</a>
+            <br>
+            <br>
         </div>
 
         <h2 id="titulo1">Mis Asignaturas</h2>

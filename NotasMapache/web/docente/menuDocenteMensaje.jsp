@@ -49,8 +49,8 @@
         <h1 id="titulo4">Enviar Mensaje</h1>
 
         <%
-            String asignaturaId = request.getParameter("asignatura");
-            int asignaturaID = Integer.parseInt(asignaturaId);
+            //String asignaturaId = request.getParameter("asignatura");
+            //int asignaturaID = Integer.parseInt(asignaturaId);
         %>
 
     </body>
