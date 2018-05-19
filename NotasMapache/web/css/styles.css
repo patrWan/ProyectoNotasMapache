@@ -741,3 +741,13 @@
 
     color: #F39F02;
 }
+
+#mensage{
+    font-family: Tahoma, Geneva, sans-serif;
+    font-size: 19px;
+
+    padding: 5px;
+    
+    margin-left: 80px;
+    color: black; 
+}

@@ -15,6 +15,11 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <link
+            rel = "stylesheet"
+            href = "../css/styles.css"
+            type = "text/css"
+            >
         <%
             //MySQL_PrivilegioDAO p = new MySQL_PrivilegioDAO();
             Alumno a = (Alumno) session.getAttribute("sesion");
@@ -27,10 +32,25 @@
         <title>Mensajes Docente</title>
     </head>
     <body>
-        <h1>Mensajes Docente</h1>
-        <h1><%out.println("Bienvenido! " + a.getNombre());%></h1><br>
-        <%out.println("Rut: " + a.getRut());%>
-        <h2>Asignaturas</h2>
+        <div class="barraMenuArriba">
+
+            <img class="imgLogo" src="../images/logoIntranet.png">
+
+
+            <h1 id="ma_nomAlumno"><%out.println("Bienvenid@ : " + a.getNombre());%></h1><br>
+            <h1 id="ma_rutAlumno"><%out.println("Rut : " + a.getRut());%></h1>
+
+
+            <form id="formCerrarSesion" method="POST" action="../cerrarSesion.do">
+                <input class="btnCerrarSesion" type="submit" value="Cerrar Sesión">                
+            </form>
+        </div>
+
+        <div id="barraMenuAbajoId">
+            <a id="registrarAlum" href='menuAlumno.jsp'>Menú</a>
+        </div>
+
+        <h1 id="titulo3">Mensajes</h1>
 
         <%
             //int verMensajeAlumno = Integer.parseInt(request.getParameter("verMensaje"));
@@ -45,17 +65,19 @@
             //3.-
             nuevoAlumnoAsignatura = alumnoAsignaturaD.getAlumnoByRut(a.getRut());
 
-            out.println("<table border = '1'>");
-            out.println("<tr>");
-            out.println("<th>Asignatura</th>");
-            out.println("<th>Mensaje</th>");
+            out.println("<table id='tablaAlumno3'>");
+            out.println("<tr class='teerre'>");
+            out.println("<th><h1 class='enunciado3'>Asignatura</h1></th>");
+            out.println("<th><h1 class='enunciado3'>Mensaje</h1></th>");
             out.println("</tr>");
 
             for (MensajeDocente md : mensajeDocenteD.getMensajeDocenteByAlumnoAsignatura(nuevoAlumnoAsignatura.getId())) {
-                out.println("<tr>");
+                out.println("<tr class='teerre'>");
                 for (Asignatura as : asignaturaD.getAsignaturaBy(nuevoAlumnoAsignatura.getAsignatura_fk())) {
-                    out.println("<td>" + as.getNombre() + "</td>");
-                    out.println("<td>" + md.getDescripcion() + "</td>");
+                    //out.println("<td>" + as.getNombre() + "</td>");
+                    out.println("<td><h1 id='mensage'>" + as.getNombre() + "</h1></td>");
+                    //out.println("<td>" + md.getDescripcion() + "</td>");
+                    out.println("<td><h1 id='mensage'>" + md.getDescripcion() + "</h1></td>");
                 }
                 out.println("</tr>");
 
