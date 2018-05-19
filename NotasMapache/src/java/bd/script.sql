@@ -157,7 +157,7 @@ create table alumno_curso(
 SELECT * FROM alumno;
 SELECT * FROM apoderado;
 
-
+SELECT * FROM alumnoAsignatura WHERE alumno LIKE '19.121.033-6';
 
 SELECT alumno.rut, alumno.nombre, nota.valor, nota.porcentaje, nota.id 
 FROM nota, alumno, asignatura, alumnoAsignatura

@@ -102,7 +102,8 @@ public class MySQL_AlumnoAsignaturaDAO implements AlumnoAsignaturaDAO {
     public List<AlumnoAsignatura> getListAlumnos(String rut) {
         AlumnoAsignatura a;
         listaAsignaturas = new ArrayList<>();
-        query = "SELECT * FROM alumnoAsignatura WHERE alumno = '" + rut + "';";
+        query = "SELECT * FROM alumnoAsignatura WHERE alumno like'" + rut + "';";
+        System.out.println("ENTRE AL GETLISTALUMNOS");
         rs = c.ejecutarSelect(query);
         try {
             while (rs.next()) {

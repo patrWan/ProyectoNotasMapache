@@ -113,7 +113,11 @@ INSERT INTO alumnoAsistencia VALUES(NULL,4,5,TRUE);
 
 -- PRUEBA NOTAS------------------
 
+SELECT * FROM alumnoAsignatura;
+
 INSERT INTO mensajeDocente VALUES(NULL,"Mensaje 1",1,1);
+INSERT INTO mensajeDocente VALUES(NULL,"Mensaje 2",1,2);
+INSERT INTO mensajeDocente VALUES(NULL,"Mensaje 3",1,3);
 
 -- PRUEBA Mensaje------------------
 

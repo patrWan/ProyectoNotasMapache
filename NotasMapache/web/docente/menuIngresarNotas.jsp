@@ -50,8 +50,9 @@
         </div>
         <div class="barraMenuAbajo">
             <br>
+            <a id="registrarAlum" href='menuDocente.jsp'>Menú Docente</a>
             <br>
-            <br>
+            <br>            
         </div>
 
 
@@ -75,18 +76,17 @@
                 out.println("<option value='" + ann.getIdAlumnoAsignatura() + "'>" + ann.getNombre() + " " + ann.getApellido() + "</option>");
             }
             out.println("</select><br>");
-            
+
             out.println("<br>");
-            
+
             out.println("<input id='regValorNota' type='number' name='txtNota' placeholder='Nota : ' required='' step='0.1' min='1.0' max='7.0'>");
             out.println("<input id='regPorNota'  type='number' name='txtPorcentaje' placeholder='% : ' required='' step='0.1' min='1.0' max='100.0'>");
             out.println("<input id='btnIngresarNota' type='submit' value='Ingresar Nota'>");
             out.println("</form>");
             out.println("</div>");
-            
+
             out.println("<br>");
             out.println("<br>");
-            
 
             out.println("<table id='tablaAlumno2'>");
             out.println("<tr class='teerre'>");
@@ -101,8 +101,8 @@
                     //out.println("<td>" + ann.getNombre() + "</td>");
                     out.println("<td><h1 id='asignaturaVerNota'>" + ann.getNombre() + "</h1></td>");
                     for (AlumnoNota an : nota.getNotasbyAsignatura(ann.getRut(), asignaturaID)) {
-                       //out.println("<td>" + an.getValor() + " (" + an.getPorcentaje() + "%)</td>");
-                       out.println("<td><h1 id='alumNota'>" + an.getValor() + "</h1><h1 id='alumNotaPor'>(" + an.getPorcentaje() + "%)</h1></td>");
+                        //out.println("<td>" + an.getValor() + " (" + an.getPorcentaje() + "%)</td>");
+                        out.println("<td><h1 id='alumNota'>" + an.getValor() + "</h1><h1 id='alumNotaPor'>(" + an.getPorcentaje() + "%)</h1></td>");
                     }
                     out.println("</tr>");
                 }
@@ -112,7 +112,7 @@
                     out.println("<tr class='teerre'>");
                     out.println("<td><h1 id='asignaturaVerNota'>" + ann.getNombre() + "</h1></td>");
                     for (AlumnoNota an : nota.getNotasbyAsignatura(ann.getRut(), asignaturaID)) {
-                       out.println("<td><h1 id='alumNota'>" + an.getValor() + "</h1><h1 id='alumNotaPor'>(" + an.getPorcentaje() + "%)</h1></td>");
+                        out.println("<td><h1 id='alumNota'>" + an.getValor() + "</h1><h1 id='alumNotaPor'>(" + an.getPorcentaje() + "%)</h1></td>");
                     }
                     out.println("</tr>");
                 }
@@ -122,19 +122,19 @@
 
 
         <%
-        out.println("<br>");
-        out.println("<br>");
-        
-        if (request.getParameter("modificar")== null) {
-        out.println("<a id='modificarNota' href='menuIngresarNotas.jsp?asignatura=" + asignaturaId + "&modificar=si'>Modificar nota</a>");
-        }
-        if (request.getParameter("modificar")!= null) {
-          out.println("<form method='POST' action='../modificarNota.do?asignatura="+asignaturaId+"'>");
-            out.println("<input id='idNotaModi' type='number' name='txtId' placeholder='ID Nota: ' required=''>");
-            out.println("<input id='nuevaNota' type='number' name='txtNotaNueva' placeholder='Nota: ' required='' step='0.1' min='1.0' max='7.0'>");
-            out.println("<input id='btnModificarNota' type='submit' value='Modificar Nota'>");
-          out.println("</form>");
-        }
+            out.println("<br>");
+            out.println("<br>");
+
+            if (request.getParameter("modificar") == null) {
+                out.println("<a id='modificarNota' href='menuIngresarNotas.jsp?asignatura=" + asignaturaId + "&modificar=si'>Modificar nota</a>");
+            }
+            if (request.getParameter("modificar") != null) {
+                out.println("<form method='POST' action='../modificarNota.do?asignatura=" + asignaturaId + "'>");
+                out.println("<input id='idNotaModi' type='number' name='txtId' placeholder='ID Nota: ' required=''>");
+                out.println("<input id='nuevaNota' type='number' name='txtNotaNueva' placeholder='Nota: ' required='' step='0.1' min='1.0' max='7.0'>");
+                out.println("<input id='btnModificarNota' type='submit' value='Modificar Nota'>");
+                out.println("</form>");
+            }
         %>
 
     </body>

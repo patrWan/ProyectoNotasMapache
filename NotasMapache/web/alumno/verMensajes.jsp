@@ -1,3 +1,5 @@
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <%@page import="model.Alumno"%>
@@ -61,17 +63,38 @@
             //2.-
             MySQL_AsignaturaDAO asignaturaD = new MySQL_AsignaturaDAO();
             MySQL_AlumnoAsignaturaDAO alumnoAsignaturaD = new MySQL_AlumnoAsignaturaDAO();
+
             MySQL_MensajeDocenteDAO mensajeDocenteD = new MySQL_MensajeDocenteDAO();
             //3.-
             nuevoAlumnoAsignatura = alumnoAsignaturaD.getAlumnoByRut(a.getRut());
 
+            // aca tenemos la lista de id de alumnoAsignatura
+            List<AlumnoAsignatura> alumnoAsigList = alumnoAsignaturaD.getListAlumnos(a.getRut());
+
+            //obtenemos la lista de mensajes segun la lista de asignaturas
+            //List<MensajeDocente> mensajeDocenteList = new ArrayList<>();
+            //for (AlumnoAsignatura alumAs : alumnoAsignaturaList) {
+            //  out.println("<h1>" + alumAs.getId() + "</h1>");
+            //}
             out.println("<table id='tablaAlumno3'>");
             out.println("<tr class='teerre'>");
             out.println("<th><h1 class='enunciado3'>Asignatura</h1></th>");
             out.println("<th><h1 class='enunciado3'>Mensaje</h1></th>");
             out.println("</tr>");
 
-            for (MensajeDocente md : mensajeDocenteD.getMensajeDocenteByAlumnoAsignatura(nuevoAlumnoAsignatura.getId())) {
+            for (AlumnoAsignatura alumAs : alumnoAsigList) {
+                out.println("<tr class='teerre'>");
+                for (MensajeDocente md : mensajeDocenteD.getMensajeDocenteByAlumnoAsignatura(alumAs.getAsignatura_fk())) {
+                    for (Asignatura as : asignaturaD.getAsignaturaBy(nuevoAlumnoAsignatura.getAsignatura_fk())) {
+                        //out.println("<td>" + as.getNombre() + "</td>");
+                        out.println("<td><h1 id='mensage'>" + as.getNombre() + "</h1></td>");
+                        //out.println("<td>" + md.getDescripcion() + "</td>");
+                        out.println("<td><h1 id='mensage'>" + md.getDescripcion() + "</h1></td>");
+                    }
+                    out.println("</tr>");
+                }
+            }
+            /*for (MensajeDocente md : mensajeDocenteD.getMensajeDocenteByAlumnoAsignatura(nuevoAlumnoAsignatura.getId())) {
                 out.println("<tr class='teerre'>");
                 for (Asignatura as : asignaturaD.getAsignaturaBy(nuevoAlumnoAsignatura.getAsignatura_fk())) {
                     //out.println("<td>" + as.getNombre() + "</td>");
@@ -79,9 +102,11 @@
                     //out.println("<td>" + md.getDescripcion() + "</td>");
                     out.println("<td><h1 id='mensage'>" + md.getDescripcion() + "</h1></td>");
                 }
+
                 out.println("</tr>");
 
-            }
+            }*/
+
             out.println("</table>");
 
 
